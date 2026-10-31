@@ -156,7 +156,7 @@
   <li><strong>The North Star reads near zero, and that is the finding.</strong> 27 people saved cards and only 4 came back to one, because nothing brings users back yet. I shipped the recall quiz and the self-refilling feed, and saves rose from 8 to 29 in the last week.</li>
   <li><strong>Running out of cards was the real churn.</strong> Most pilot users read the whole library, so sessions ended from exhaustion, not boredom. I moved card generation to the moment of demand.</li>
 </ol>
-<p>Two real testers also found two sign-in bugs that desktop testing had missed. Both were fixed the same day.</p>
+<p>Two real testers also found two sign-in bugs that desktop testing had missed. Both were fixed the same day.</p><h3>What I changed after launch</h3><ol class="flow " data-kind="evidence" style="--n:4"><li><b>Live on 22 July</b><span>Curio opened to real users as a web app that installs on phones.</span></li><li><b>Sign-in moved to 3 swipes</b><span>Earlier than the original 7; kept because 43% signed in, above the 30% bar.</span></li><li><b>Ten cards per topic</b><span>Simulated users who ran out of their favourite topic fell from 74% to 0%.</span></li><li><b>Recall quiz and self-refilling feed</b><span>Saves rose from 8 to 29 in the last week.</span></li></ol>
 </section>
 <section class="sec" id="next" data-kind="next" aria-labelledby="next-h">
   <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg></span>
@@ -169,8 +169,14 @@
 </ul>
 <p class="links"><a href="https://curio-three-iota.vercel.app/">Curio, the live app ↗</a> <a href="https://curio-three-iota.vercel.app/metrics.html">Live metrics page ↗</a> <a href="https://github.com/arcy1410/Curio">Source code on GitHub ↗</a></p>
 </section>
+<section class="sec" id="built-with-ai" data-kind="next" aria-labelledby="built-with-ai-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">How it was made</p><h2 id="built-with-ai-h">How I built this with AI</h2></div>
+  <p class="key">Tools: Claude Code; Claude and GPT inside Curio.</p>
+  <ul class="tiles three"><li><b>What AI did</b><span>Wrote most of the React and Supabase code with me in Claude Code, and drafts every card. A second model checks each card against its source.</span></li><li><b>What I decided</b><span>The problem, from my three interviews; the spec; the North Star and its guardrails; a reasoning model as fact-checker; sign-in at 3 swipes; no guilt notifications.</span></li><li><b>How I checked it</b><span>Production events in PostHog, the test suite in the repo, and two real testers, whose two sign-in bugs I fixed the same day.</span></li></ul>
+</section>
 </div>
-<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li data-kind="problem"><a href="#problem">Hours of scrolling, nothing kept</a></li><li data-kind="build"><a href="#built">A feed you can trust, by design</a></li><li data-kind="decision"><a href="#decisions">What I chose not to optimize for</a></li><li data-kind="result"><a href="#results">Three weeks, 120 users, one honest miss</a></li><li data-kind="evidence"><a href="#learned">Three things the numbers showed</a></li><li data-kind="next"><a href="#next">Where Curio goes from here</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li data-kind="problem"><a href="#problem">Hours of scrolling, nothing kept</a></li><li data-kind="build"><a href="#built">A feed you can trust, by design</a></li><li data-kind="decision"><a href="#decisions">What I chose not to optimize for</a></li><li data-kind="result"><a href="#results">Three weeks, 120 users, one honest miss</a></li><li data-kind="evidence"><a href="#learned">Three things the numbers showed</a></li><li data-kind="next"><a href="#next">Where Curio goes from here</a></li><li data-kind="next"><a href="#built-with-ai">How I built this with AI</a></li></ul></nav>
 </div>
 <div class="wrap">
   <a class="door" href="/fold" style="--door-bg:#17182B;--door-ink:#FFFFFF;--door-accent:#9DB0E8;--door-font:'Inter Variable', system-ui, sans-serif;--door-weight:700">

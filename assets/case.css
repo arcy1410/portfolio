@@ -623,3 +623,4 @@ th[aria-sort="ascending"] .sort-btn::after { content: "\2191"; opacity: 1; }
 .c-hero h1.is-long { font-size: clamp(36px, 4.6vw, 62px); max-width: 19ch; }
 .score li.is-star > div { display: flex; flex-direction: column; gap: 6px; }
 .door strong { font-family: var(--door-font, var(--font-display)); font-weight: var(--door-weight, var(--display-weight)); }
+.tiles.three { grid-template-columns: repeat(3, minmax(0, 1fr)); } @media (max-width: 760px) { .tiles.three { grid-template-columns: minmax(0, 1fr); } }
