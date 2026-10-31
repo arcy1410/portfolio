@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-product="versus">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,14 +11,16 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="/assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#141414">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
 <link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/case.css">
 <script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
 <script src="/assets/site.js" defer></script>
+<script src="/assets/case.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -40,31 +42,48 @@
 </dialog>
 <main id="main">
 <article class="case">
-<header class="case-hero wrap">
-  <p class="crumb"><a href="/#work">Work</a> / Competitors</p>
-  <h1 class="vt-landing" style="view-transition-name: t-competitors">Fold, INDmoney and CRED Money</h1>
-  <p class="dek">Fold is the only one of the three where tracking money is the product. INDmoney and CRED give tracking away free to sell investing and credit, so Fold has to win on accuracy and depth, not price.</p>
-  <dl class="facts"><div><dt>Market</dt><dd>Money tracking, India</dd></div><div><dt>Apps</dt><dd>Fold · INDmoney · CRED Money</dd></div><div><dt>Sources</dt><dd>Public pages, reviews, the Fold app</dd></div><div><dt>Date</dt><dd>31 Oct 2026</dd></div></dl>
-  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Question</h2><p>Why would anyone pay for Fold when rivals track money for free?</p></li><li style="--r:0.7deg"><h2>Answer</h2><p>Only if Fold is clearly more accurate and complete. Trust is the product.</p></li><li style="--r:-0.5deg"><h2>So what</h2><p>Stale data hurts Fold more than its rivals, which backs the bank-sync alert.</p></li></ul>
+<header class="c-hero">
+  <div class="wrap c-hero-grid">
+    <div class="c-hero-text">
+      <p class="crumb"><a href="/#work">Work</a> / Competitors</p>
+      <h1 class="vt-landing" style="view-transition-name: t-competitors">Fold, INDmoney and CRED Money</h1>
+      <p class="dek">Fold is the only one of the three where tracking money is the product. INDmoney and CRED give tracking away free to sell investing and credit, so Fold has to win on accuracy and depth, not price.</p>
+      <div class="cta"><a class="btn" href="#compare">Compare them</a><a class="btn ghost" href="#meaning">What it means for Fold</a></div>
+    </div>
+    <div class="stage"><div class="vs"><div class="vs-card" style="--app-bg:#2E4270;--app-ink:#FFFFFF"><b>Fold</b><span class="sells core">Tracking is the product</span><p>Charges for tracking: a free tier, plus Fold Plus at ₹999 a year.</p></div><div class="vs-card" style="--app-bg:#0B6E6A;--app-ink:#FFFFFF"><b>INDmoney</b><span class="sells free">Tracking is free</span><p>Earns from investing, through brokerage on stocks and funds.</p></div><div class="vs-card" style="--app-bg:#262626;--app-ink:#E4E4E4"><b>CRED Money</b><span class="sells free">Tracking is free</span><p>Lives inside CRED's payments app, for affluent, creditworthy users.</p></div></div></div>
+  </div>
 </header>
+<section class="glance wrap" aria-labelledby="glance-h">
+  <div class="glance-card">
+    <h2 class="glance-title" id="glance-h">At a glance</h2>
+    <ul class="glance-stats" style="--cols:4"><li><span class="n"><span data-count="3">3</span></span><span class="l">apps compared on user, feature, price and gaps</span></li><li data-tone="brand"><span class="n"><span data-count="1">1</span></span><span class="l">of them charges for tracking: Fold</span></li><li><span class="n">₹<span data-count="999">999</span></span><span class="l">a year for Fold Plus; the rivals charge nothing for tracking</span></li><li><span class="n"><span data-count="750">750</span></span><span class="l">credit score CRED needed to join, in 2021</span></li></ul>
+    <dl class="glance-facts"><div><dt>Market</dt><dd>Money tracking, India</dd></div><div><dt>Apps</dt><dd>Fold, INDmoney, CRED Money</dd></div><div><dt>Sources</dt><dd>Public pages, reviews, the Fold app</dd></div><div><dt>Date</dt><dd>31 Oct 2026</dd></div></dl>
+  </div>
+</section>
+<section class="tldr wrap" aria-labelledby="tldr-h">
+  <h2 id="tldr-h">The short version</h2>
+  <ul class="tldr-cards"><li data-kind="evidence"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg>Question</h3><p>Why would anyone pay for Fold when rivals track money for free?</p></li><li data-kind="decision"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21v-7.5"/><path d="M12 13.5 6.2 6"/><path d="M12 13.5 17.8 6"/><path d="M5.6 10.2V5.4h4.8"/><path d="M18.4 10.2V5.4h-4.8"/></svg>Answer</h3><p>Only if Fold is clearly more accurate and complete. Trust is the product.</p></li><li data-kind="result"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17.5 9.2 11l4 4L21 7"/><path d="M15 7h6v6"/></svg>So what</h3><p>Stale data hurts Fold more than its rivals, which backs the bank-sync alert.</p></li></ul>
+</section>
 <div class="wrap case-grid">
-<div class="body">
-
-<h2 id="the-comparison">The comparison</h2>
-<p>All three pull bank data through India's Account Aggregator network, so the difference is what each app is for.</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Fold, INDmoney, CRED Money'><table><thead><tr><th scope='col'></th><th scope='col'>Fold</th><th scope='col'>INDmoney</th><th scope='col'>CRED Money</th></tr></thead><tbody><tr><td><strong>Target user</strong></td><td>People who want every account, card and investment tracked automatically, often ex-spreadsheet users</td><td>Investors in Indian and US stocks and mutual funds</td><td>Affluent, creditworthy users; joining CRED needed a credit score of 750 or more</td></tr><tr><td><strong>Core feature</strong></td><td>Automatic tracking: auto-tagged spending, cash flow and net worth</td><td>Investing, with a net worth view that includes bank accounts</td><td>One view of all bank balances, plus reminders for recurring payments</td></tr><tr><td><strong>Pricing</strong></td><td>Free tier, plus Fold Plus at ₹999 a year (seen in the app, 31 Oct 2026)</td><td>Tracking has no listed fee; earns from brokerage</td><td>Free; CRED said it won't charge for it</td></tr><tr><td><strong>Where it falls short</strong></td><td>Stale bank data isn't dated on balances and totals; paywall angers long-time users; card tracking needs email access</td><td>Tracking is a side feature, better at totals than day-to-day spending</td><td>Only for CRED's audience; tracking sits inside a large payments app</td></tr></tbody></table></div>
-
-<h2 id="what-it-means-for-fold">What it means for Fold</h2>
-<p>Fold charges for something its two rivals give away. That only works if Fold's tracking is clearly more accurate and complete than a free side feature.</p>
-<ul>
-  <li><strong>Trust is the product.</strong> A stale bank feed hurts Fold more than it hurts INDmoney or CRED, because tracking is all Fold sells. That backs <a href="/fold">the bank-sync alert</a>.</li>
-  <li><strong>The paywall needs to feel fair.</strong> Pricing was the angriest theme in Fold's reviews. With free alternatives a tap away, moving features from free to paid pushes users out.</li>
-  <li><strong>Depth is the moat.</strong> Fold tracks cards, EPF, NPS, FDs and insurance in one place. Neither rival makes that its main job, so Fold should keep widening coverage.</li>
-</ul>
-
-<h2 id="sources-and-limits">Sources and limits</h2>
-<p class="note">The rivals' columns come from public pages, since I don't use either app; Fold's come from 50 Play Store reviews and checks in the app. CRED's 750 credit-score rule is from 2021 and may have changed. INDmoney's weakness comes from a rival app's blog.</p>
-<ul class="note">
+<div class="cbody">
+<section class="sec" id="compare" data-kind="evidence" aria-labelledby="compare-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Evidence</p><h2 id="compare-h">Same data pipes, different businesses</h2></div>
+  <p class="key">All three pull bank data through India's Account Aggregator network, so <mark>the difference is what each app is for</mark>.</p>
+  <div class="tabs" role="tablist" aria-label="Compare on" data-tabs><button class="chip-btn" type="button" role="tab" id="tab-user" aria-controls="panel-user" aria-selected="true" tabindex="0">Who it's for</button><button class="chip-btn" type="button" role="tab" id="tab-core" aria-controls="panel-core" aria-selected="false" tabindex="-1">Core feature</button><button class="chip-btn" type="button" role="tab" id="tab-price" aria-controls="panel-price" aria-selected="false" tabindex="-1">Pricing</button><button class="chip-btn" type="button" role="tab" id="tab-gaps" aria-controls="panel-gaps" aria-selected="false" tabindex="-1">Where it falls short</button></div><div class="tab-panel" role="tabpanel" id="panel-user" aria-labelledby="tab-user" tabindex="0"><div class="app-col" style="--app-bg:#2E4270;--app-ink:#FFFFFF"><h3>Fold</h3><p>People who want every account, card and investment tracked automatically, often ex-spreadsheet users</p></div><div class="app-col" style="--app-bg:#0B6E6A;--app-ink:#FFFFFF"><h3>INDmoney</h3><p>Investors in Indian and US stocks and mutual funds</p></div><div class="app-col" style="--app-bg:#262626;--app-ink:#E4E4E4"><h3>CRED Money</h3><p>Affluent, creditworthy users; joining CRED needed a credit score of 750 or more</p></div></div><div class="tab-panel" role="tabpanel" id="panel-core" aria-labelledby="tab-core" tabindex="0" hidden><div class="app-col" style="--app-bg:#2E4270;--app-ink:#FFFFFF"><h3>Fold</h3><p>Automatic tracking: auto-tagged spending, cash flow and net worth</p></div><div class="app-col" style="--app-bg:#0B6E6A;--app-ink:#FFFFFF"><h3>INDmoney</h3><p>Investing, with a net worth view that includes bank accounts</p></div><div class="app-col" style="--app-bg:#262626;--app-ink:#E4E4E4"><h3>CRED Money</h3><p>One view of all bank balances, plus reminders for recurring payments</p></div></div><div class="tab-panel" role="tabpanel" id="panel-price" aria-labelledby="tab-price" tabindex="0" hidden><div class="app-col" style="--app-bg:#2E4270;--app-ink:#FFFFFF"><h3>Fold</h3><p>Free tier, plus Fold Plus at ₹999 a year (seen in the app, 31 Oct 2026)</p></div><div class="app-col" style="--app-bg:#0B6E6A;--app-ink:#FFFFFF"><h3>INDmoney</h3><p>Tracking has no listed fee; earns from brokerage</p></div><div class="app-col" style="--app-bg:#262626;--app-ink:#E4E4E4"><h3>CRED Money</h3><p>Free; CRED said it won't charge for it</p></div></div><div class="tab-panel" role="tabpanel" id="panel-gaps" aria-labelledby="tab-gaps" tabindex="0" hidden><div class="app-col" style="--app-bg:#2E4270;--app-ink:#FFFFFF"><h3>Fold</h3><p>Stale bank data isn't dated on balances and totals; the paywall angers long-time users; card tracking needs email access</p></div><div class="app-col" style="--app-bg:#0B6E6A;--app-ink:#FFFFFF"><h3>INDmoney</h3><p>Tracking is a side feature, better at totals than day-to-day spending</p></div><div class="app-col" style="--app-bg:#262626;--app-ink:#E4E4E4"><h3>CRED Money</h3><p>Only for CRED's audience; tracking sits inside a large payments app</p></div></div>
+</section>
+<section class="sec" id="meaning" data-kind="decision" aria-labelledby="meaning-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21v-7.5"/><path d="M12 13.5 6.2 6"/><path d="M12 13.5 17.8 6"/><path d="M5.6 10.2V5.4h4.8"/><path d="M18.4 10.2V5.4h-4.8"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Decision</p><h2 id="meaning-h">What it means for Fold</h2></div>
+  <p class="key">Fold charges for something its two rivals give away. <mark>That only works if Fold's tracking is clearly more accurate and complete</mark> than a free side feature.</p>
+  <ul class="tiles"><li><b>Trust is the product</b><span>A stale bank feed hurts Fold more than it hurts INDmoney or CRED, because tracking is all Fold sells. That backs <a href="/fold">the bank-sync alert</a>.</span></li><li><b>The paywall needs to feel fair</b><span>Pricing was the angriest theme in Fold's reviews. With free alternatives a tap away, moving features from free to paid pushes users out.</span></li><li><b>Depth is the moat</b><span>Fold tracks cards, EPF, NPS, FDs and insurance in one place. Neither rival makes that its main job, so Fold should keep widening coverage.</span></li><li><b>Price is not the fight</b><span>Fold can't undercut free. It has to be the app people trust when the numbers matter.</span></li></ul>
+</section>
+<section class="sec" id="sources" data-kind="next" aria-labelledby="sources-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Sources</p><h2 id="sources-h">Sources and limits</h2></div>
+  <p class="key">The rivals' columns come from public pages, since <mark>I don't use either app</mark>; Fold's come from reviews and checks in the app.</p>
+  <p class="note-line">CRED's 750 credit-score rule is from 2021 and may have changed. INDmoney's weakness comes from a rival app's blog. The colours here only tell the apps apart: Fold's navy comes from its app, CRED's black from its brand, and INDmoney's teal is my choice.</p>
+<ul class="note-line">
   <li><a href="https://www.indmoney.com/features/track-bank-account">Track bank accounts, INDmoney</a></li>
   <li><a href="https://www.indmoney.com/pricing">INDmoney pricing</a></li>
   <li><a href="https://getfinny.app/blog/best-expense-tracker-apps-india-2026">Best expense tracker apps in India 2026, Finny (a rival app's blog)</a></li>
@@ -72,13 +91,17 @@
   <li><a href="https://inc42.com/?p=469689">CRED unveils new offering to manage bank accounts, Inc42</a></li>
   <li><a href="https://techcrunch.com/2021/04/06/indias-cred-valued-at-2-2-billion-in-new-215-million-fundraise">CRED valued at $2.2 billion, TechCrunch, April 2021</a></li>
 </ul>
-</div><!--/body-->
-<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#the-comparison">The comparison</a></li><li><a href="#what-it-means-for-fold">What it means for Fold</a></li><li><a href="#sources-and-limits">Sources and limits</a></li></ul></nav>
+</section>
 </div>
-<div class="wrap"><nav class="next" aria-label="More case studies">
-  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
-  <a href="/amazon"><span>Next case study</span><strong data-vt="amazon">Amazon's product page, built for deciding</strong></a>
-</nav></div>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li data-kind="evidence"><a href="#compare">Same data pipes, different businesses</a></li><li data-kind="decision"><a href="#meaning">What it means for Fold</a></li><li data-kind="next"><a href="#sources">Sources and limits</a></li></ul></nav>
+</div>
+<div class="wrap">
+  <a class="door" href="/amazon" style="--door-bg:#232F3E;--door-ink:#FFFFFF;--door-accent:#FF9900;--door-font:'Inter Variable', system-ui, sans-serif;--door-weight:700">
+    <div><span>Next case study</span><strong data-vt="amazon">Amazon's product page, built for deciding</strong></div>
+    <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 12h15"/><path d="m13.5 6 6 6-6 6"/></svg></span>
+  </a>
+  <p class="back-row"><a href="/#work">Back to all work</a></p>
+</div>
 </article>
 </main>
 <footer class="site-foot"><div class="wrap">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-product="fold">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -14,11 +14,12 @@
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
-<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/case.css">
 <script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
 <script src="/assets/site.js" defer></script>
+<script src="/assets/case.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -40,63 +41,222 @@
 </dialog>
 <main id="main">
 <article class="case">
-<header class="case-hero wrap">
-  <p class="crumb"><a href="/#work">Work</a> / Fold</p>
-  <h1 class="vt-landing" style="view-transition-name: t-fold">Fold: warn users when a bank goes quiet</h1>
-  <p class="dek">I read 50 Play Store reviews of Fold, a money tracker I use, and found one problem worth fixing first: when a bank's feed fails, balances keep looking current for weeks. This page takes it from review analysis to a one-page PRD and an A/B test plan.</p>
-  <dl class="facts"><div><dt>Product</dt><dd>Fold (money tracking, India)</dd></div><div><dt>Evidence</dt><dd>50 reviews, Feb–Oct 2026</dd></div><div><dt>Deliverables</dt><dd>Analysis, PRD, A/B plan</dd></div><div><dt>Date</dt><dd>28–31 Oct 2026</dd></div></dl>
-  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Problem</h2><p>Fold shows refresh status in a small pill, but balances and totals carry no date. A stale account looks current.</p></li><li style="--r:0.7deg"><h2>What I'd ship</h2><p>After 3 days without a refresh: one alert, dated totals, a free retry and a reconnect option.</p></li><li style="--r:-0.5deg"><h2>How I'd know</h2><p>Days to notice under 3; more stale accounts recovering within 14 days, with no rise in opt-outs.</p></li></ul>
+<header class="c-hero">
+  <div class="wrap c-hero-grid">
+    <div class="c-hero-text">
+      <p class="crumb"><a href="/#work">Work</a> / Fold</p>
+      <h1 class="vt-landing" style="view-transition-name: t-fold">Fold: warn users when a bank goes quiet</h1>
+      <p class="dek">I read 50 Play Store reviews of Fold, a money tracker I use, and found one problem worth fixing first: when a bank's feed fails, balances keep looking current for weeks. This page takes it from review analysis to a one-page PRD and an A/B test plan.</p>
+      <div class="cta"><a class="btn" href="#prd">Read the PRD</a><a class="btn ghost" href="#test">See the A/B test</a></div>
+    </div>
+    <div class="stage"><div class="sim" data-mode="today" data-stale="false" data-sim>
+  <div class="push" aria-hidden="true" data-sim-push><i>f</i><div><b data-sim-push-title>SBI hasn't updated since 28 Oct</b>Totals that include it may be out of date. Tap to retry, free.</div></div>
+  <div class="sim-phone">
+    <div class="seg" role="group" aria-label="Which version of Fold">
+      <button type="button" aria-pressed="true" data-sim-mode="today">Fold today</button>
+      <button type="button" aria-pressed="false" data-sim-mode="fix">With my fix</button>
+    </div>
+    <div class="sim-total">
+      <div class="lbl"><span>Total bank balance</span><span class="asof" data-sim-asof>Includes data from 28 Oct</span></div>
+      <div class="amt">₹2,48,310</div>
+    </div>
+    <div class="banner" role="status"><b data-sim-banner>SBI hasn't updated in 3 days</b>The last successful refresh was <span data-sim-last>28 Oct</span>. The bank's feed is failing, not your account.<div class="acts"><span>Retry, free</span><span>Reconnect</span></div></div>
+    <div class="accts"><div class="acct"><span class="lg" style="background:#3B4F84">SBI</span><div><div class="nm">SBI Savings</div><span class="st is-stale" data-sim-st>Refreshed today</span></div><div class="bal">₹1,12,480</div></div><div class="acct"><span class="lg" style="background:#5A5B73">HDFC</span><div><div class="nm">HDFC Savings</div><span class="st">Refreshed today</span></div><div class="bal">₹96,240</div></div><div class="acct"><span class="lg" style="background:#7A6E9E">AXIS</span><div><div class="nm">Axis Savings</div><span class="st">Refreshed today</span></div><div class="bal">₹39,590</div></div></div>
+  </div>
+  <div class="sim-note scribble" aria-hidden="true">looks current.<br>it isn't.<svg viewBox="0 0 70 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M62 4c-10 3-26 9-36 18S12 34 6 35"/><path d="M14 30 6 35l3-9"/></svg></div>
+  <div class="sim-day">
+    <label for="simDay"><span>Days since SBI last refreshed</span><output for="simDay" data-sim-out>0 days</output></label>
+    <input id="simDay" type="range" min="0" max="35" value="0" step="1" data-sim-range>
+    <div class="sim-ticks" aria-hidden="true"><span>Today</span><span>Day 3: alert</span><span>Day 7: reminder</span><span>Day 35</span></div>
+  </div>
+  <p class="sim-legend">Sample balances. Dates count back from 31 Oct.</p>
+</div><p class="stage-hint">Drag the slider to let a bank go quiet, then switch to my fix.</p></div>
+  </div>
 </header>
+<section class="glance wrap" aria-labelledby="glance-h">
+  <div class="glance-card">
+    <h2 class="glance-title" id="glance-h">At a glance</h2>
+    <ul class="glance-stats" style="--cols:4"><li><span class="n"><span data-count="50">50</span></span><span class="l">Play Store reviews tagged and scored</span></li><li data-tone="bad"><span class="n">5 of 5</span><span class="l">bank-sync reviews were serious: blockers or wrong numbers</span></li><li><span class="n"><span data-count="3">3</span><small>days</small></span><span class="l">without a refresh before the alert fires</span></li><li data-tone="brand"><span class="n">~<span data-count="390">390</span></span><span class="l">users with a stale account per group in the test</span></li></ul>
+    <dl class="glance-facts"><div><dt>Product</dt><dd>Fold, money tracking, India</dd></div><div><dt>Evidence</dt><dd>50 reviews, Feb to Oct 2026</dd></div><div><dt>Deliverables</dt><dd>Analysis, PRD, A/B test plan</dd></div><div><dt>Date</dt><dd>28 to 31 Oct 2026</dd></div></dl>
+  </div>
+</section>
+<section class="tldr wrap" aria-labelledby="tldr-h">
+  <h2 id="tldr-h">The short version</h2>
+  <ul class="tldr-cards"><li data-kind="problem"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.6 2.6 19.8h18.8L12 3.6z"/><path d="M12 10v4.4"/><path d="M12 17.3v.2"/></svg>Problem</h3><p>Fold shows refresh status in a small pill, but balances and totals carry no date. A stale account looks current.</p></li><li data-kind="build"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg>What I'd ship</h3><p>After 3 days without a refresh: one alert, dated totals, a free retry and a reconnect option.</p></li><li data-kind="result"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17.5 9.2 11l4 4L21 7"/><path d="M15 7h6v6"/></svg>How I'd know</h3><p>Days to notice under 3; more stale accounts recovering within 14 days, with no rise in opt-outs.</p></li></ul>
+</section>
 <div class="wrap case-grid">
-<div class="body">
-
-<h2 id="reviews">1. What users complain about</h2>
-<p><a href="https://play.google.com/store/apps/details?id=money.fold.marble">Fold</a> tracks bank accounts, cards and investments in one app, pulling data through India's Account Aggregator network. It's well liked: 4.6 stars on Google Play from about 1,400 reviews. Complaints about a product people like show where it falls short, not whether it works.</p>
-<p>I took 50 reviews from the 160 newest on Google Play. Only 24 of the 160 were rated 1 to 3 stars, so I kept all 24 and added the 16 newest 4-star and 10 newest 5-star reviews. For each I logged a summary, tags, Fold's reply and helpful votes, then rated severity: <strong>blocker</strong> (can't use Fold, or leaving), <strong>wrong numbers</strong> (stale, duplicated, miscategorised), or <strong>friction</strong> (everything else).</p>
+<div class="cbody">
+<section class="sec" id="reviews" data-kind="evidence" aria-labelledby="reviews-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Evidence</p><h2 id="reviews-h">What 50 reviews complain about</h2></div>
+  <p class="key">Fold is well liked: 4.6 stars from about 1,400 reviews, so its complaints show where it falls short. <mark>Bank sync drew only five reviews, but every one was serious.</mark></p>
+  <p><a href="https://play.google.com/store/apps/details?id=money.fold.marble">Fold</a> tracks bank accounts, cards and investments in one app, pulling data through India's Account Aggregator network. I took 50 reviews from the 160 newest on Google Play. Only 24 of the 160 were rated 1 to 3 stars, so I kept all 24 and added the 16 newest 4-star and 10 newest 5-star reviews. For each I logged a summary, tags, Fold's reply and helpful votes, then rated severity: <strong>blocker</strong> (can't use Fold, or leaving), <strong>wrong numbers</strong> (stale, duplicated, miscategorised), or <strong>friction</strong> (everything else).</p>
 <figure class='figure' data-pickable><svg viewBox="0 0 760 360" role="group" aria-label="Seven complaint themes in 38 Fold reviews. Bank sync has only 5 reviews, but all 5 are blockers or wrong numbers."><rect x="250" y="20" width="12" height="12" rx="2" style="fill:var(--accent)" fill-opacity="1"/><text x="268" y="31" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Blocker</text><rect x="380" y="20" width="12" height="12" rx="2" style="fill:var(--accent)" fill-opacity="0.45"/><text x="398" y="31" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Wrong numbers</text><rect x="510" y="20" width="12" height="12" rx="2" style="fill:var(--muted)" fill-opacity="0.3"/><text x="528" y="31" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Friction</text><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Gaps in what Fold tracks: 11 reviews, with 0 blockers, 6 with wrong numbers and 5 with friction. 4 helpful votes. Example: Federal Bank cards can&#x27;t be tracked, because the bank doesn&#x27;t send transaction emails."><rect class="hit" x="6" y="61" width="748" height="40" rx="9"/><text x="238" y="86" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Gaps in what Fold tracks</text><rect x="250" y="70" width="214" height="22" rx="3" style="fill:var(--accent)" fill-opacity="0.45"/><rect x="466" y="70" width="178" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="652" y="86" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >11</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Paywall and pricing: 9 reviews, with 2 blockers, 0 with wrong numbers and 7 with friction. 51 helpful votes. Example: ₹299 a month felt too steep for expense tracking, and 33 people marked that review helpful."><rect class="hit" x="6" y="101" width="748" height="40" rx="9"/><text x="238" y="126" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Paywall and pricing</text><rect x="250" y="110" width="70" height="22" rx="3" style="fill:var(--accent)" fill-opacity="1"/><rect x="322" y="110" width="250" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="580" y="126" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >9</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Hard to find or use: 7 reviews, with 1 blocker, 0 with wrong numbers and 6 with friction. 4 helpful votes. Example: A user asked for salary-cycle months, which Fold already offers as Account In."><rect class="hit" x="6" y="141" width="748" height="40" rx="9"/><text x="238" y="166" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Hard to find or use</text><rect x="250" y="150" width="34" height="22" rx="3" style="fill:var(--accent)" fill-opacity="1"/><rect x="286" y="150" width="214" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="508" y="166" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >7</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Wrong or rigid categories: 6 reviews, with 1 blocker, 3 with wrong numbers and 2 with friction. 4 helpful votes. Example: A BigBasket order was tagged as entertainment."><rect class="hit" x="6" y="181" width="748" height="40" rx="9"/><text x="238" y="206" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Wrong or rigid categories</text><rect x="250" y="190" width="34" height="22" rx="3" style="fill:var(--accent)" fill-opacity="1"/><rect x="286" y="190" width="106" height="22" rx="3" style="fill:var(--accent)" fill-opacity="0.45"/><rect x="394" y="190" width="70" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="472" y="206" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >6</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Bank sync breaks: 5 reviews, with 3 blockers, 2 with wrong numbers and 0 with friction. 3 helpful votes. Example: An SBI account hadn&#x27;t updated in over a month."><rect class="hit" x="6" y="221" width="748" height="40" rx="9"/><text x="238" y="246" font-size="13" font-weight="600" style="fill:var(--ink)" text-anchor="end" >Bank sync breaks</text><rect x="250" y="230" width="106" height="22" rx="3" style="fill:var(--accent)" fill-opacity="1"/><rect x="358" y="230" width="70" height="22" rx="3" style="fill:var(--accent)" fill-opacity="0.45"/><text x="436" y="246" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >5</text><text x="460" y="246" font-size="12.5" font-weight="600" style="fill:var(--accent)" text-anchor="start" >← all 5 serious: the fix I chose</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Trouble getting into the app: 4 reviews, with 2 blockers, 0 with wrong numbers and 2 with friction. 0 helpful votes. Example: On a Vivo phone, the OTP button was hidden at sign-up."><rect class="hit" x="6" y="261" width="748" height="40" rx="9"/><text x="238" y="286" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Trouble getting into the app</text><rect x="250" y="270" width="70" height="22" rx="3" style="fill:var(--accent)" fill-opacity="1"/><rect x="322" y="270" width="70" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="400" y="286" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >4</text></g><g class="pick" tabindex="0" role="button" aria-pressed="false" data-detail="Other wishes: 2 reviews, with 0 blockers, 0 with wrong numbers and 2 with friction. 0 helpful votes. Example: A request for budgeting, which Fold says it&#x27;s building."><rect class="hit" x="6" y="301" width="748" height="40" rx="9"/><text x="238" y="326" font-size="13" font-weight="400" style="fill:var(--ink)" text-anchor="end" >Other wishes</text><rect x="250" y="310" width="70" height="22" rx="3" style="fill:var(--muted)" fill-opacity="0.3"/><text x="328" y="326" font-size="12.5" font-weight="600" style="fill:var(--ink)" text-anchor="start" >2</text></g></svg><p class='detail' aria-live='polite'>Tap a theme to read an example review and its helpful votes.</p><figcaption>My tagging of 50 Google Play reviews from February to October 2026. 38 raised a complaint or request.</figcaption></figure>
 <p>Pricing drew the most agreement: 51 helpful votes, 33 of them on a single review. Five reviews asked for features Fold already has. In reviewers' words:</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Theme, What a reviewer said'><table><thead><tr><th scope='col'>Theme</th><th scope='col'>What a reviewer said</th></tr></thead><tbody><tr><td>Bank sync</td><td>&ldquo;it's just like old passbook now&rdquo;</td></tr><tr><td>Pricing</td><td>&ldquo;₹299/month is a ridiculous price&rdquo;</td></tr><tr><td>Categories</td><td>&ldquo;big basket purchases is noted as innovative film and tagged as entertainment&rdquo;</td></tr><tr><td>Hard to find</td><td>&ldquo;i never knew that we can enter transaction manually&rdquo;</td></tr><tr><td>Getting in</td><td>&ldquo;the app closes as soon as I open it&rdquo;</td></tr></tbody></table></div>
-
-<h3>Choosing one fix</h3>
-<p>I scored each theme on three tests: is it common, does it hurt, and can Fold act on it?</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Theme, Common, Hurts, Fold can act, Total'><table><thead><tr><th scope='col'>Theme</th><th scope='col'>Common</th><th scope='col'>Hurts</th><th scope='col'>Fold can act</th><th scope='col'>Total</th></tr></thead><tbody><tr><td>Wrong or rigid categories</td><td class='num'>2</td><td class='num'>3</td><td class='num'>3</td><td class='num'><strong>8</strong></td></tr><tr><td><strong>Bank sync breaks</strong></td><td class='num'>2</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>7</strong></td></tr><tr><td>Paywall and pricing</td><td class='num'>3</td><td class='num'>1</td><td class='num'>3</td><td class='num'><strong>7</strong></td></tr><tr><td>Gaps in what Fold tracks</td><td class='num'>3</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>7</strong></td></tr></tbody></table></div>
-<div class="callout"><strong>My first pick already existed, so I checked before committing.</strong>The top-scoring theme was wrong categories, and my fix was to let a tag change apply to the merchant's other transactions. Checking in the app showed Fold already does this. I moved to the runner-up, bank sync, then checked again: Fold already shows each bank's refresh status in a pill and a sheet. So the fix narrowed to the real gap, which is that the numbers people read carry no date.</div>
-<p>Every sync review was serious: three blockers and two cases of wrong numbers. SBI appears in 4 of the 5, and Fold's own docs say <a href="https://docs.fold.money/known-issues-aa/banks-supported-by-fold-last-updated">refresh failures are very common</a> at several large banks. Fold can't fix a bank's feed, but it fully controls when and how users find out. Pricing is the loudest complaint but is mostly about price, a deliberate business choice.</p>
-
-<h2 id="prd">2. One-page PRD</h2>
-<p><strong>Problem.</strong> Fold refreshes bank data <a href="https://help.fold.money/hc/en-us/articles/21755140559762-How-frequently-is-my-bank-data-refreshed">once a day</a>. When a bank's feed fails, the account quietly stops updating; one reviewer's SBI account went over a month. Users find out only when a balance looks wrong.</p>
-<p><strong>User.</strong> Anyone with a connected bank, most often at banks whose feeds fail. They open Fold to check where their money stands, for example before a large purchase. They need to know when a number is out of date, why, and what they can do about it.</p>
-<p><strong>The first version does five things:</strong></p>
-<ol>
-  <li><strong>Detect.</strong> Mark an account stale after 3 days without a successful refresh, respecting known bank patterns (some don't refresh on weekends).</li>
-  <li><strong>Tell.</strong> One push notification when an account goes stale, one reminder at 7 days, a banner on the account, and any total that includes it marked with the date of its oldest data.</li>
-  <li><strong>Explain.</strong> Name the bank, the last successful refresh, and the cause when Fold knows it.</li>
-  <li><strong>Offer a next step.</strong> A retry that doesn't count against the <a href="https://help.fold.money/hc/en-us/articles/22621823226386-What-are-Ad-hoc-refreshes">5 extra refreshes a month</a> free users get, and a way to reconnect.</li>
-  <li><strong>Clear itself.</strong> Remove the flag on the next successful refresh; let users mute alerts for one account.</li>
-</ol>
-<p><strong>Later:</strong> statement upload to fill the gap. <strong>Not in scope:</strong> fixing banks' feeds, which only banks can do.</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Metric, Definition, Starting target'><table><thead><tr><th scope='col'>Metric</th><th scope='col'>Definition</th><th scope='col'>Starting target</th></tr></thead><tbody><tr><td><strong>Days to notice</strong> (main)</td><td>Median days from last successful refresh to the owner opening the warning</td><td>3 or fewer</td></tr><tr><td>Recovery</td><td>Share of stale accounts refreshing again within 7 days of the warning</td><td>Set after a 2-week baseline</td></tr><tr><td>Retention (outcome)</td><td>60-day retention of users who had an account go stale</td><td>Higher than pre-launch</td></tr><tr><td>False alarms (guardrail)</td><td>Warnings for accounts that refresh on their own within a day</td><td>Under 10%</td></tr><tr><td>Mutes (guardrail)</td><td>Share of warned users who mute alerts for an account</td><td>No steady rise</td></tr></tbody></table></div>
-<p class="note">Open questions: is 3 days the right threshold at every bank? How many stale accounts come from expired Account Aggregator consent rather than a failing bank? Does Fold already send a push alert? My banks were all refreshing, so I couldn't check.</p>
-
-<h2 id="test">3. A/B test plan</h2>
-<p><strong>Hypothesis.</strong> If Fold alerts users once an account goes 3 days without updating, more stale accounts will be updating again within 14 days, because users retry or reconnect instead of going weeks without noticing.</p>
-<p><strong>Design.</strong> Split users with a connected bank into two equal groups at random, by user rather than account, so each person sees one consistent app. Group A keeps today's app; group B gets the alert, dated totals, the free retry and reconnect. In group A, log the moment an alert would have fired, so both groups start the clock at the same point.</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Metric, Role, Definition'><table><thead><tr><th scope='col'>Metric</th><th scope='col'>Role</th><th scope='col'>Definition</th></tr></thead><tbody><tr><td>Recovery</td><td><span class='pill good'>Primary</span></td><td>Share of stale accounts updating again within 14 days</td></tr><tr><td>Fix actions</td><td>Secondary</td><td>Share of users who retry or reconnect within 7 days</td></tr><tr><td>Time to recovery</td><td>Secondary</td><td>Median days from going stale to the next successful refresh</td></tr><tr><td>60-day retention</td><td>Outcome</td><td>Share still opening Fold 60 days after their account went stale</td></tr><tr><td>Notification opt-outs</td><td><span class='pill warn'>Guardrail</span></td><td>Share who turn off Fold's notifications within 14 days</td></tr><tr><td>Uninstalls</td><td><span class='pill warn'>Guardrail</span></td><td>Share who uninstall within 14 days</td></tr></tbody></table></div>
-<p><strong>Sample size.</strong> Fold doesn't publish how often stale accounts recover, so I assumed half do within 14 days today. Spotting a lift from 50% to 60% at 95% confidence and 80% power needs <span class="hl">about 390 users with a stale account per group</span>:</p>
-<p class="formula" tabindex="0" aria-label="Sample size formula">n = (1.96 + 0.84)² × [0.5×0.5 + 0.6×0.4] ÷ 0.1² ≈ 385 per group</p>
-<p>Enroll for at least two full weeks, since some banks don't refresh on weekends, then follow each user for 14 days: the first result comes after about four weeks. Fix the sample size up front and don't stop early because the numbers look good.</p>
-<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Recovery, Guardrails, Decision'><table><thead><tr><th scope='col'>Recovery</th><th scope='col'>Guardrails</th><th scope='col'>Decision</th></tr></thead><tbody><tr><td>Up</td><td>Flat</td><td><strong>Ship to everyone</strong></td></tr><tr><td>Up</td><td>Worse</td><td>Cut the noise first (fewer reminders or a later threshold), then retest</td></tr><tr><td>Not up</td><td>Flat</td><td>Look by cause; keep alerts only where users can fix the problem</td></tr><tr><td>Not up</td><td>Worse</td><td>Don't ship the push alert; keep only the in-app flag</td></tr></tbody></table></div>
-<p><strong>Risks.</strong> One bank's outage can swamp the result, so check that each bank's users are split evenly and report by bank. If two weeks don't produce 390 per group, run longer rather than accept a smaller sample.</p>
-
-<h2 id="limits">Limits</h2>
-<p>Reviews come mostly from unhappy users, so they show what hurts, not how many people it hurts. The sample is Play Store only, and the tags and severity ratings are one reader's calls; four themes sit within one point. Next, I'd interview five users whose bank went stale, to learn how they found out and what they did.</p>
-</div><!--/body-->
-<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#reviews">What users complain about</a></li><li><a href="#prd">One-page PRD</a></li><li><a href="#test">A/B test plan</a></li><li><a href="#limits">Limits</a></li></ul></nav>
+<ul class="quotes">
+  <li class="is-pick"><span class="tag">Bank sync</span><q>it's just like old passbook now</q></li>
+  <li><span class="tag">Pricing</span><q>₹299/month is a ridiculous price</q></li>
+  <li><span class="tag">Categories</span><q>big basket purchases is noted as innovative film and tagged as entertainment</q></li>
+  <li><span class="tag">Hard to find</span><q>i never knew that we can enter transaction manually</q></li>
+  <li><span class="tag">Getting in</span><q>the app closes as soon as I open it</q></li>
+</ul>
+</section>
+<section class="sec" id="choice" data-kind="decision" aria-labelledby="choice-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21v-7.5"/><path d="M12 13.5 6.2 6"/><path d="M12 13.5 17.8 6"/><path d="M5.6 10.2V5.4h4.8"/><path d="M18.4 10.2V5.4h-4.8"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Decision</p><h2 id="choice-h">Choosing one fix, then checking it twice</h2></div>
+  <p class="key">I scored each theme on three tests: is it common, does it hurt, and can Fold act on it? <mark>My first two picks already existed in the app</mark>, so the fix narrowed to the real gap.</p>
+  <div class='table-wrap' tabindex='0' role='region' aria-label='Table: Theme, Common, Hurts, Fold can act, Total'><table><thead><tr><th scope='col'>Theme</th><th scope='col'>Common</th><th scope='col'>Hurts</th><th scope='col'>Fold can act</th><th scope='col'>Total</th></tr></thead><tbody><tr><td>Wrong or rigid categories</td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><b>2</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><strong>8</strong></td></tr><tr><td><strong>Bank sync breaks</strong></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><b>2</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><b>2</b></td><td class='num'><strong>7</strong></td></tr><tr><td>Paywall and pricing</td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class=""></i><i class=""></i></span><b>1</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><strong>7</strong></td></tr><tr><td>Gaps in what Fold tracks</td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><b>3</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><b>2</b></td><td class='num'><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class=""></i></span><b>2</b></td><td class='num'><strong>7</strong></td></tr></tbody></table></div><div class="callout" data-kind="decision"><span class="c-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21v-7.5"/><path d="M12 13.5 6.2 6"/><path d="M12 13.5 17.8 6"/><path d="M5.6 10.2V5.4h4.8"/><path d="M18.4 10.2V5.4h-4.8"/></svg></span><strong>My first pick already existed, so I checked before committing.</strong><p>The top-scoring theme was wrong categories, and my fix was to let a tag change apply to the merchant's other transactions. Checking in the app showed Fold already does this. I moved to the runner-up, bank sync, then checked again: Fold already shows each bank's refresh status in a pill and a sheet. So the fix narrowed to the real gap: the numbers people read carry no date.</p></div><p>Every sync review was serious: three blockers and two cases of wrong numbers. SBI appears in 4 of the 5, and Fold's own docs say <a href="https://docs.fold.money/known-issues-aa/banks-supported-by-fold-last-updated">refresh failures are very common</a> at several large banks. Fold can't fix a bank's feed, but it fully controls when and how users find out. Pricing is the loudest complaint but is mostly about price, a deliberate business choice.</p>
+</section>
+<section class="sec" id="prd" data-kind="build" aria-labelledby="prd-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">One-page PRD</p><h2 id="prd-h">The spec, on one page</h2></div>
+  <p class="key">The first version does five things: <mark>detect, tell, explain, offer a next step, and clear itself</mark>.</p>
+  <div class="prd" id="prd-sheet">
+  <header class="prd-head">
+    <div>
+      <span class="prd-type">PRD</span>
+      <h3>Warn users when a bank goes quiet</h3>
+      <p class="prd-sub">Fold, bank sync. The first version, on one page.</p>
+    </div>
+    <dl class="prd-meta">
+      <dt>Author</dt><dd>Ankur Roy Chowdhury</dd>
+      <dt>Status</dt><dd><span class="status">Draft for review</span></dd>
+      <dt>Date</dt><dd>31 Oct 2026</dd>
+      <dt>Evidence</dt><dd>50 Play Store reviews</dd>
+    </dl>
+  </header>
+  <div class="prd-grid">
+    <section class="prd-block" data-kind="problem">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.6 2.6 19.8h18.8L12 3.6z"/><path d="M12 10v4.4"/><path d="M12 17.3v.2"/></svg>Problem</h4>
+      <p>Fold refreshes bank data <a href="https://help.fold.money/hc/en-us/articles/21755140559762-How-frequently-is-my-bank-data-refreshed">once a day</a>. When a bank's feed fails, the account quietly stops updating; one reviewer's SBI account went over a month. Users find out only when a balance looks wrong.</p>
+      <div class="prd-stats"><span><b>1×</b>a day, scheduled refresh</span><span><b>1 month+</b>longest stale account</span><span><b>5 of 5</b>sync reviews serious</span></div>
+    </section>
+    <section class="prd-block" data-kind="evidence">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg>User and need</h4>
+      <p>Anyone with a connected bank, most often at banks whose feeds fail. They open Fold to check where their money stands, for example before a large purchase. They need to know:</p>
+      <ul><li>when a number is out of date,</li><li>why it stopped updating,</li><li>and what they can do about it.</li></ul>
+    </section>
+    <section class="prd-block span-2" data-kind="build">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg>Scope</h4>
+      <div class="scope">
+        <div><b>In the first version</b><ul><li>Detect a stale account</li><li>Tell the user</li><li>Explain why</li><li>Offer a next step</li><li>Clear itself</li></ul></div>
+        <div><b>Later</b><ul><li>Statement upload to fill the gap</li></ul></div>
+        <div><b>Not in scope</b><ul><li>Fixing banks' feeds, which only banks can do</li></ul></div>
+      </div>
+    </section>
+    <section class="prd-block span-2" data-kind="build">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg>Requirements</h4>
+      <div class="req-wrap" tabindex="0" role="region" aria-label="Requirements">
+      <table class="req"><thead><tr><th scope="col">ID</th><th scope="col">Requirement</th><th scope="col">Detail</th><th scope="col">Release</th></tr></thead><tbody><tr><td><span class="id">R1</span></td><td class="name">Detect</td><td>Mark an account stale after 3 days without a successful refresh, respecting known bank patterns (some don't refresh on weekends).</td><td><span class="prio p0">v1</span></td></tr><tr><td><span class="id">R2</span></td><td class="name">Tell</td><td>One push notification when an account goes stale, one reminder at 7 days, a banner on the account, and any total that includes it marked with the date of its oldest data.</td><td><span class="prio p0">v1</span></td></tr><tr><td><span class="id">R3</span></td><td class="name">Explain</td><td>Name the bank, the last successful refresh, and the cause when Fold knows it.</td><td><span class="prio p0">v1</span></td></tr><tr><td><span class="id">R4</span></td><td class="name">Offer a next step</td><td>A retry that doesn't count against the <a href="https://help.fold.money/hc/en-us/articles/22621823226386-What-are-Ad-hoc-refreshes">5 extra refreshes a month</a> free users get, and a way to reconnect.</td><td><span class="prio p0">v1</span></td></tr><tr><td><span class="id">R5</span></td><td class="name">Clear itself</td><td>Remove the flag on the next successful refresh; let users mute alerts for one account.</td><td><span class="prio p0">v1</span></td></tr><tr><td><span class="id">R6</span></td><td class="name">Fill the gap</td><td>Statement upload, so a stale account can be brought up to date by hand.</td><td><span class="prio p1">Later</span></td></tr></tbody></table>
+      </div>
+    </section>
+    <section class="prd-block span-2" data-kind="build">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg>How it plays out</h4>
+      <ol class="timeline">
+        <li><b>Day 0</b>Last successful refresh</li>
+        <li class="is-alert"><b>Day 3</b>Marked stale: push alert, banner, dated totals</li>
+        <li class="is-alert"><b>Day 7</b>One reminder, then no more</li>
+        <li><b>Any time</b>Free retry, or reconnect</li>
+        <li class="is-good"><b>Next refresh</b>The flag clears itself</li>
+      </ol>
+    </section>
+    <section class="prd-block span-2" data-kind="result">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17.5 9.2 11l4 4L21 7"/><path d="M15 7h6v6"/></svg>Success metrics</h4>
+      <div class="mtiles"><div class="mtile main"><span class="role">Main</span><b>Days to notice</b><span class="tg">Median days from last successful refresh to the owner opening the warning<strong>3 or fewer</strong></span></div><div class="mtile "><span class="role">Secondary</span><b>Recovery</b><span class="tg">Share of stale accounts refreshing again within 7 days of the warning<strong>Set after a 2-week baseline</strong></span></div><div class="mtile outcome"><span class="role">Outcome</span><b>Retention</b><span class="tg">60-day retention of users who had an account go stale<strong>Higher than pre-launch</strong></span></div><div class="mtile guard"><span class="role">Guardrail</span><b>False alarms</b><span class="tg">Warnings for accounts that refresh on their own within a day<strong>Under 10%</strong></span></div><div class="mtile guard"><span class="role">Guardrail</span><b>Mutes</b><span class="tg">Share of warned users who mute alerts for an account<strong>No steady rise</strong></span></div></div>
+    </section>
+    <section class="prd-block" data-kind="decision">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21v-7.5"/><path d="M12 13.5 6.2 6"/><path d="M12 13.5 17.8 6"/><path d="M5.6 10.2V5.4h4.8"/><path d="M18.4 10.2V5.4h-4.8"/></svg>Open questions</h4>
+      <ul>
+        <li>Is 3 days the right threshold at every bank?</li>
+        <li>How many stale accounts come from expired Account Aggregator consent rather than a failing bank?</li>
+        <li>Does Fold already send a push alert? My banks were all refreshing, so I couldn't check.</li>
+      </ul>
+    </section>
+    <section class="prd-block" data-kind="result">
+      <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.4"/></svg>Launch</h4>
+      <p>Test before launch: a two-group A/B test on users with a connected bank, with recovery as the primary metric. Ship to everyone only if recovery goes up and the guardrails hold.</p>
+      <p><a href="#test">See the test plan</a></p>
+    </section>
+  </div>
+  <footer class="prd-foot">
+    <span>Ankur Roy Chowdhury, product portfolio</span>
+    <span class="btns"><button type="button" class="btn ghost sm" data-print-prd><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3.8h10V9"/><rect x="3.5" y="9" width="17" height="7.5" rx="2"/><path d="M7 14h10v6.2H7z"/></svg>Save as PDF</button></span>
+  </footer>
 </div>
-<div class="wrap"><nav class="next" aria-label="More case studies">
-  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
-  <a href="/prioritization"><span>Next case study</span><strong data-vt="prioritization">Prioritization: 10 ideas for Fold, by impact and effort</strong></a>
-</nav></div>
+</section>
+<section class="sec" id="test" data-kind="result" aria-labelledby="test-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17.5 9.2 11l4 4L21 7"/><path d="M15 7h6v6"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">A/B test plan</p><h2 id="test-h">How I'd know it works</h2></div>
+  <p class="key">Recovery is the primary metric: <mark>more stale accounts updating again within 14 days</mark>, with opt-outs and uninstalls as guardrails.</p>
+  <div class="xp">
+  <div class="xp-part">
+    <h3>Hypothesis</h3>
+    <p class="hyp"><span class="if"><i>If</i>Fold alerts users once an account goes 3 days without updating,</span> <span class="then"><i>then</i>more stale accounts will be updating again within 14 days,</span> <span class="because"><i>because</i>users retry or reconnect instead of going weeks without noticing.</span></p>
+  </div>
+  <div class="xp-part">
+    <h3>Design</h3>
+    <div class="arms">
+      <div class="arm"><b>Group A: today's app</b><ul><li>No alert and no dated totals</li><li>Log the moment an alert would have fired, so both groups start the clock at the same point</li></ul></div>
+      <div class="arm b"><b>Group B: the fix</b><ul><li>The alert, and one reminder at 7 days</li><li>Dated totals and the account banner</li><li>The free retry and reconnect</li></ul></div>
+    </div>
+    <p class="note-line" style="margin-top:12px">Split users with a connected bank into two equal groups at random, by user rather than account, so each person sees one consistent app.</p>
+  </div>
+  <div class="xp-part">
+    <h3>Metrics</h3>
+    <div class="mrow"><div class="mchip primary"><span class="r">Primary</span><b>Recovery</b>Share of stale accounts updating again within 14 days</div><div class="mchip "><span class="r">Secondary</span><b>Fix actions</b>Share of users who retry or reconnect within 7 days</div><div class="mchip "><span class="r">Secondary</span><b>Time to recovery</b>Median days from going stale to the next successful refresh</div><div class="mchip "><span class="r">Outcome</span><b>60-day retention</b>Share still opening Fold 60 days after their account went stale</div><div class="mchip guard"><span class="r">Guardrail</span><b>Notification opt-outs</b>Share who turn off Fold's notifications within 14 days</div><div class="mchip guard"><span class="r">Guardrail</span><b>Uninstalls</b>Share who uninstall within 14 days</div></div>
+  </div>
+  <div class="xp-part">
+    <h3>Sample size: try the assumptions</h3>
+    <div class="calc" data-calc>
+      <div>
+        <label for="calcBase">Stale accounts that recover today <output data-calc-base-out for="calcBase">50%</output></label>
+        <input id="calcBase" type="range" min="20" max="80" step="5" value="50" data-calc-base>
+        <label for="calcLift">Smallest lift worth finding <output data-calc-lift-out for="calcLift">10 points</output></label>
+        <input id="calcLift" type="range" min="4" max="20" step="1" value="10" data-calc-lift>
+        <p class="note-line">Fold doesn't publish how often stale accounts recover, so I assumed half do within 14 days today. 95% confidence, 80% power.</p>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="big"><span data-calc-n>385</span><small>per group</small></div>
+        <p data-calc-say>To spot a lift from 50% to 60%, I'd need <span class="hl">about 390 users with a stale account per group</span>.</p>
+        <code data-calc-formula>n = (1.96 + 0.84)² × [0.50×0.50 + 0.60×0.40] ÷ 0.10² ≈ 385</code>
+      </div>
+    </div>
+  </div>
+  <div class="xp-part">
+    <h3>Timing</h3>
+    <div class="span"><div><b>Enroll for 2 full weeks or more</b>Some banks don't refresh on weekends</div><div><b>Then follow each user for 14 days</b>The first result comes after about four weeks</div></div>
+    <p class="note-line" style="margin-top:10px">Fix the sample size up front and don't stop early because the numbers look good.</p>
+  </div>
+  <div class="xp-part">
+    <h3>What I'd decide</h3>
+    <div class="decide">
+      <span class="ax blank"></span><span class="ax">Guardrails flat</span><span class="ax">Guardrails worse</span>
+      <span class="ay">Recovery up</span><div class="cell ship"><b>Ship to everyone</b></div><div class="cell tune"><b>Cut the noise, then retest</b>Fewer reminders or a later threshold</div>
+      <span class="ay">Recovery not up</span><div class="cell look"><b>Look by cause</b>Keep alerts only where users can fix the problem</div><div class="cell stop"><b>Don't ship the push alert</b>Keep only the in-app flag</div>
+    </div>
+  </div>
+  <div class="xp-part">
+    <h3>Risks</h3>
+    <p>One bank's outage can swamp the result, so check that each bank's users are split evenly and report by bank. If two weeks don't produce 390 per group, run longer rather than accept a smaller sample.</p>
+  </div>
+</div>
+</section>
+<section class="sec" id="limits" data-kind="next" aria-labelledby="limits-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Limits</p><h2 id="limits-h">What this can't tell you</h2></div>
+  <p class="key">Reviews come mostly from unhappy users, so they show <mark>what hurts, not how many people it hurts</mark>.</p>
+  <p>The sample is Play Store only, and the tags and severity ratings are one reader's calls; four themes sit within one point. Next, I'd interview five users whose bank went stale, to learn how they found out and what they did.</p>
+</section>
+</div>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li data-kind="evidence"><a href="#reviews">What 50 reviews complain about</a></li><li data-kind="decision"><a href="#choice">Choosing one fix, then checking it twice</a></li><li data-kind="build"><a href="#prd">The spec, on one page</a></li><li data-kind="result"><a href="#test">How I&#x27;d know it works</a></li><li data-kind="next"><a href="#limits">What this can&#x27;t tell you</a></li></ul></nav>
+</div>
+<div class="wrap">
+  <a class="door" href="/prioritization" style="--door-bg:#2E4270;--door-ink:#FFFFFF;--door-accent:#BFE3C9;--door-font:'Inter Variable', system-ui, sans-serif;--door-weight:700">
+    <div><span>Next case study</span><strong data-vt="prioritization">Prioritization: 10 ideas for Fold, by impact and effort</strong></div>
+    <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 12h15"/><path d="m13.5 6 6 6-6 6"/></svg></span>
+  </a>
+  <p class="back-row"><a href="/#work">Back to all work</a></p>
+</div>
 </article>
 </main>
 <footer class="site-foot"><div class="wrap">

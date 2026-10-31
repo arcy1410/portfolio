@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-product="ledger">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,28 +11,31 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="/assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#13294B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
-<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/case.css">
 <script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
 <script src="/assets/site.js" defer></script>
+<script src="/assets/case.js" defer></script>
 <style>
 .tg-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .tg-tile { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; }
 .tg-tile .k { font-size: 13px; color: var(--muted); }
-.tg-tile .v { font-family: var(--font-display); font-size: 32px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tg-tile .v { font-family: var(--font-display); font-size: 32px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--head); }
 .tg-tile .s { font-size: 13px; color: var(--muted); }
 .tg-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .tg-actions .btn { font-size: 14px; }
+.tg-actions .btn:not(.solid) { background: var(--card); color: var(--head); border-color: var(--rule); }
+.tg-actions .btn:not(.solid):hover { border-color: var(--head); }
 .tg-actions .btn:disabled { opacity: 0.5; cursor: default; }
 .tg-cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
-.tg-main { flex: 999 1 600px; min-width: 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; }
-.tg-side { flex: 1 1 260px; display: flex; flex-direction: column; gap: 16px; }
+.tg-main { flex: 999 1 560px; min-width: 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; }
+.tg-side { flex: 1 1 240px; display: flex; flex-direction: column; gap: 16px; }
 .tg-panel { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-.tg-panel h3, .tg-head h3 { font-size: 17px; }
+.tg-panel h3, .tg-head h3 { font-size: 17px; margin: 0; }
 .tg-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
 .tg-month { font-family: var(--font-mono); padding: 10px 16px 4px; color: var(--muted); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
 .tg-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) 88px 180px 22px; gap: 12px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--rule); font-size: 14px; }
@@ -84,18 +87,39 @@ ol.tg-log { margin: 0; padding-left: 20px; display: flex; flex-direction: column
 </dialog>
 <main id="main">
 <article class="case">
-<header class="case-hero wrap">
-  <p class="crumb"><a href="/#work">Work</a> / Tagger prototype</p>
-  <h1 class="vt-landing" style="view-transition-name: t-tagger">A transaction tagger that learns</h1>
-  <p class="dek">Bank statements often print a company's registered name, not its brand: Swiggy appears as BUNDL TECHNOLOGIES, Ola as ANI TECHNOLOGIES. This working prototype starts with keyword rules, asks an AI model about the merchants those miss, and turns each of your corrections into a rule for that merchant, past and future.</p>
-  <dl class="facts"><div><dt>Type</dt><dd>Working AI prototype</dd></div><div><dt>Data</dt><dd>34 invented sample transactions</dd></div><div><dt>Baseline</dt><dd>Keywords alone: 11 of 24 right</dd></div><div><dt>Built</dt><dd>Oct 2026, with Claude</dd></div></dl>
-  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Why</h2><p>In my own October spending, Untagged was the largest category. Wrong categories were Fold's top-scoring review theme.</p></li><li style="--r:0.7deg"><h2>How</h2><p>Three layers: keyword rules, then an LLM for legal names, then your corrections saved as merchant rules.</p></li><li style="--r:-0.5deg"><h2>Score</h2><p>Every tag is checked against my own hand labels, so you can watch accuracy move.</p></li></ul>
+<header class="c-hero">
+  <div class="wrap c-hero-grid">
+    <div class="c-hero-text">
+      <p class="crumb"><a href="/#work">Work</a> / Tagger prototype</p>
+      <h1 class="vt-landing" style="view-transition-name: t-tagger">A transaction tagger that learns</h1>
+      <p class="dek">Bank statements often print a company's registered name, not its brand: Swiggy appears as BUNDL TECHNOLOGIES, Ola as ANI TECHNOLOGIES. This working prototype starts with keyword rules, asks an AI model about the merchants those miss, and turns each of your corrections into a rule for that merchant, past and future.</p>
+      <div class="cta"><a class="btn" href="#try">Try it</a><a class="btn ghost" href="#how">How it works</a></div>
+    </div>
+    <div class="stage"><div class="slip" data-slip>
+  <div class="slip-head"><span>Narration, as the bank prints it</span><span>Amount</span></div>
+  <div class="slip-row"><code>UPI/429410238871/BUNDL TECHNOLOGIES/UPI</code><span class="amt">−389.00</span><div class="slip-tag"><span class="stamp no">Keywords: no match</span><span class="stamp ai">AI: Food &amp; Drinks</span><span class="slip-why">Bundl Technologies is Swiggy's company</span></div></div><div class="slip-row"><code>UPI/429455120938/INNOVATIVE RETAIL CONCEPTS/UPI</code><span class="amt">−1,846.00</span><div class="slip-tag"><span class="stamp no">Keywords: Shopping, wrong</span><span class="stamp you">Your rule: Groceries</span><span class="slip-why">It's BigBasket. One fix covers every order</span></div></div><div class="slip-row"><code>UPI/429501873266/ANI TECHNOLOGIES PVT LTD/ride</code><span class="amt">−236.00</span><div class="slip-tag"><span class="stamp no">Keywords: no match</span><span class="stamp ai">AI: Transport</span><span class="slip-why">ANI Technologies is Ola's company</span></div></div>
+  <div class="slip-foot"><span>Sample lines from the prototype's data</span><button type="button" data-slip-run>Tag again</button></div>
+</div><p class="stage-hint">Three layers, cheapest first: keywords, then AI, then your corrections.</p></div>
+  </div>
 </header>
+<section class="glance wrap" aria-labelledby="glance-h">
+  <div class="glance-card">
+    <h2 class="glance-title" id="glance-h">At a glance</h2>
+    <ul class="glance-stats" style="--cols:4"><li data-tone="bad"><span class="n"><span data-count="46">46</span><small>%</small></span><span class="l">right with keyword rules alone: 11 of 24 transactions</span></li><li><span class="n"><span data-count="3">3</span></span><span class="l">layers: keywords, an AI model, your corrections</span></li><li><span class="n"><span data-count="34">34</span></span><span class="l">invented sample transactions across two months</span></li><li data-tone="good"><span class="n"><span data-count="0">0</span></span><span class="l">new work next month for merchants you've taught</span></li></ul>
+    <dl class="glance-facts"><div><dt>Type</dt><dd>Working AI prototype</dd></div><div><dt>Data</dt><dd>Invented sample transactions</dd></div><div><dt>Built</dt><dd>Oct 2026, with Claude</dd></div><div><dt>For</dt><dd>Fold's big bet: smarter auto-tagging</dd></div></dl>
+  </div>
+</section>
+<section class="tldr wrap" aria-labelledby="tldr-h">
+  <h2 id="tldr-h">The short version</h2>
+  <ul class="tldr-cards"><li data-kind="problem"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.6 2.6 19.8h18.8L12 3.6z"/><path d="M12 10v4.4"/><path d="M12 17.3v.2"/></svg>Why</h3><p>In my own October spending, Untagged was the largest category. Wrong categories were Fold's top-scoring review theme.</p></li><li data-kind="build"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg>How</h3><p>Three layers: keyword rules, then an LLM for legal names, then your corrections saved as merchant rules.</p></li><li data-kind="result"><h3 class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 17.5 9.2 11l4 4L21 7"/><path d="M15 7h6v6"/></svg>Score</h3><p>Every tag is checked against my own hand labels, so you can watch accuracy move.</p></li></ul>
+</section>
 <div class="wrap case-grid">
-<div class="body">
-
-<h2 id="try-it">Try it</h2>
-<p>Click <strong>Ask AI</strong>, fix anything still wrong, then bring in next month and see how much it tags with no new work. All transactions are invented sample data.</p>
+<div class="cbody">
+<section class="sec" id="try" data-kind="build" aria-labelledby="try-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3.2 9 5-9 5-9-5 9-5z"/><path d="m3 12.6 9 5 9-5"/><path d="m3 16.8 9 5 9-5"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Try it</p><h2 id="try-h">Tag a month, then the next</h2></div>
+  <p class="key">Click <mark>Ask AI</mark>, fix anything still wrong, then bring in next month and see how much it tags with no new work.</p>
+  
 <section class="tg-tiles" aria-label="Score">
   <div class="tg-tile"><div class="k">Tagged correctly</div><div class="v" id="acc">0%</div><div class="s" id="accSub"></div></div>
   <div class="tg-tile"><div class="k">Still untagged</div><div class="v" id="untagged">0</div><div class="s">transactions with no category</div></div>
@@ -117,16 +141,20 @@ ol.tg-log { margin: 0; padding-left: 20px; display: flex; flex-direction: column
     <section class="tg-panel"><h3>How the score moved</h3><ol class="tg-log" id="log"></ol></section>
   </aside>
 </div>
-
-<h2 id="how-it-works">How it works</h2>
-<ol>
-  <li><strong>Keyword rules first.</strong> Cheap and predictable: SWIGGY, UBER, NETFLIX. They get 11 of 24 October transactions right (46%), and they get some wrong: &ldquo;INNOVATIVE RETAIL CONCEPTS&rdquo; matches RETAIL and lands in Shopping, but it's BigBasket, which is Groceries.</li>
-  <li><strong>An AI model for the legal names.</strong> Only merchants the keywords can't place go to the model, with a fixed list of categories and an instruction to answer &ldquo;Untagged&rdquo; when unsure. It returns a short reason, shown under the transaction, so a wrong guess is easy to spot.</li>
-  <li><strong>Your corrections become rules.</strong> Change a category and it asks whether to apply it to every transaction from that merchant, including future ones. That's the step that compounds: next month needs no new work for merchants you've taught.</li>
-</ol>
-<div class="callout"><strong>What I'd want to learn from real users</strong>Whether people trust an AI reason enough to leave a tag alone, and how many corrections it takes before Untagged stops being their biggest category. The order of layers matters too: user rules always win over the model, so a correction is never overridden.</div>
-<p class="note">Built by Claude to my spec. The AI step runs through a small server function, so the page never holds an API key.</p>
-<script>
+<p class="note-line">All transactions are invented sample data.</p>
+</section>
+<section class="sec" id="how" data-kind="evidence" aria-labelledby="how-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">How it works</p><h2 id="how-h">Three layers, cheapest first</h2></div>
+  <p class="key">Each layer only sees what the cheaper one before it couldn't place, and <mark>your corrections always win</mark>.</p>
+  <ol class="flow " data-kind="evidence" style="--n:3"><li><b>Keyword rules first</b><span>Cheap and predictable: SWIGGY, UBER, NETFLIX. They get 11 of 24 October transactions right (46%), and some wrong: &ldquo;INNOVATIVE RETAIL CONCEPTS&rdquo; matches RETAIL and lands in Shopping, but it's BigBasket, which is Groceries.</span></li><li><b>An AI model for the legal names</b><span>Only merchants the keywords can't place go to the model, with a fixed list of categories and an instruction to answer &ldquo;Untagged&rdquo; when unsure. It returns a short reason, shown under the transaction.</span></li><li><b>Your corrections become rules</b><span>Change a category and it asks whether to apply it to every transaction from that merchant, including future ones. That's the step that compounds.</span></li></ol>
+</section>
+<section class="sec" id="learn" data-kind="next" aria-labelledby="learn-h">
+  <span class="sec-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m10.2 8 4.2 4-4.2 4"/></svg></span>
+  <div class="sec-head"><p class="sec-kind">Next</p><h2 id="learn-h">What I'd want to learn from real users</h2></div>
+  <p class="key">Whether people <mark>trust an AI reason</mark> enough to leave a tag alone.</p>
+  <p>And how many corrections it takes before Untagged stops being their biggest category. The order of layers matters too: user rules always win over the model, so a correction is never overridden.</p><p class="note-line">Built by Claude to my spec. The AI step runs through a small server function, so the page never holds an API key.</p>
+</section><script>
 const CATS = ["Food & Drinks", "Groceries", "Transport", "Travel", "Bills", "Shopping", "Entertainment", "Medical", "Investments", "Transfers", "Income"];
 
 const KEYWORDS = [
@@ -373,13 +401,17 @@ addLog("Keyword rules only");
 render();
 
 </script>
-</div><!--/body-->
-<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#try-it">Try it</a></li><li><a href="#how-it-works">How it works</a></li></ul></nav>
+
 </div>
-<div class="wrap"><nav class="next" aria-label="More case studies">
-  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
-  <a href="/curio"><span>Next case study</span><strong data-vt="curio">Curio: a learning feed people actually use</strong></a>
-</nav></div>
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li data-kind="build"><a href="#try">Tag a month, then the next</a></li><li data-kind="evidence"><a href="#how">Three layers, cheapest first</a></li><li data-kind="next"><a href="#learn">What I&#x27;d want to learn from real users</a></li></ul></nav>
+</div>
+<div class="wrap">
+  <a class="door" href="/curio" style="--door-bg:#0A3323;--door-ink:#F7F4D5;--door-accent:#D3968C;--door-font:'Instrument Serif', Georgia, serif;--door-weight:400">
+    <div><span>Next case study</span><strong data-vt="curio">Curio: a learning feed people actually use</strong></div>
+    <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 12h15"/><path d="m13.5 6 6 6-6 6"/></svg></span>
+  </a>
+  <p class="back-row"><a href="/#work">Back to all work</a></p>
+</div>
 </article>
 </main>
 <footer class="site-foot"><div class="wrap">

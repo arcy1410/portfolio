@@ -87,7 +87,8 @@
     const dark = currentTheme() === "dark";
     themeBtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     const meta = d.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", dark ? "#0C1240" : "#FFFFFF");
+    const heroBg = root.dataset.product ? getComputedStyle(root).getPropertyValue("--hero-bg").trim() : "";
+    if (meta) meta.setAttribute("content", heroBg || (dark ? "#0C1240" : "#FFFFFF"));
   }
   syncTheme();
   darkQuery.addEventListener("change", syncTheme);
@@ -328,7 +329,7 @@
   /* ---------- A light tick on links and buttons that don't have their own ---------- */
   d.addEventListener("click", e => {
     const el = e.target.closest("a[href], .btn, .seq a, .index a");
-    if (!el || el.closest(".note, [data-copy], [data-theme-toggle], [data-haptics-toggle], .menu-btn, [data-close], .tg-actions, .tg-confirm, .rule-item, .pick")) return;
+    if (!el || el.closest(".note, [data-copy], [data-theme-toggle], [data-haptics-toggle], .menu-btn, [data-close], .tg-actions, .tg-confirm, .rule-item, .pick, .c-app, .sim, .ro, .jp, .slip, .chip-btn, .sort-btn, .calc, [data-print-prd]")) return;
     haptics.tick();
   });
 })();
