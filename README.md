@@ -1,13 +1,27 @@
 # Ankur Roy Chowdhury · Product portfolio
 
-A static site: plain HTML, one stylesheet, one script, charts drawn as inline SVG. No build step.
+Live at **https://ankurroychowdhury.vercel.app**
+
+A static site: plain HTML, two stylesheets, two scripts, charts drawn as inline SVG. No build step on Vercel; the pages are generated locally by a small Python script.
 
 ## Design
 
-- **Colours from ISB's brand:** Legacy Blue `#192890` for headlines, Innovation Blue `#245BFF` for anything you can act on, Future Green `#BFFF87` only as highlighter lines and sticky-note text, cool greys for body copy and rules. Dark mode is a deep navy.
-- **Type:** Inter (ISB's body face) and Newsreader (a free stand-in for ISB's licensed Reckless serif), both self-hosted under the SIL Open Font License.
-- **Interaction:** the home page's evidence notes flip from a piece of evidence to the fix; project titles grow into the next page's headline (cross-document View Transitions, Chrome and Safari 18.2+); the theme switch wipes in from the button; charts reveal the evidence behind each mark; haptics on phones (Vibration API on Android, the switch-control haptic on iOS 18+), with an off switch.
-- Reduced motion, keyboard use and screen readers are supported; axe reports no serious issues.
+- **Home page in ISB's brand:** Legacy Blue `#192890` for headlines, Innovation Blue `#245BFF` for anything you can act on, Future Green `#BFFF87` only as highlighter lines and sticky-note text. Type: Inter and Newsreader.
+- **Each case study wears its product's own theme** (`assets/case.css`, generated per product, light and dark):
+
+| Page | Theme | Where the colours come from |
+| --- | --- | --- |
+| Curio | Cream, deep green, teal, rose; Instrument Serif and DM Sans | Curio's own design tokens |
+| Fold, Prioritization | Cool grey ground, white cards, navy, sync-status greens and reds; Kalam for hand-drawn notes | Sampled from the Fold app |
+| Competitors | CRED black stage; each app keeps its own colour | Fold's navy from its app, CRED's black; INDmoney's teal is only to tell it apart |
+| Amazon | Squid ink, orange, CTA yellow, link teal | Amazon's product page |
+| Kite | Zerodha blue and the Kite logo's orange-red | Sampled from Kite screenshots; text blues darkened to pass contrast |
+| Tagger | A passbook: navy print on pale blue | Bank statements, which is what it reads |
+
+- **Same structure on every case page,** so a reader learns it once: a product-coloured hero with one live demo, an **At a glance** strip of the key numbers, **The short version** in three cards, then sections colour-coded by kind (problem, evidence, decision, build, result, next) on a spine, with a matching table of contents.
+- **Live demos:** swipe Curio's real seed cards; drag a slider to watch a Fold bank go quiet, with and without the fix; watch Amazon's 24 blocks reorder into the redesign; replay the 19-screen Kite sign-up against its step counter; see statement lines get stamped by keywords, AI and your rules.
+- **The Fold PRD is a one-page sheet** with requirements, scope, timeline and metric tiles. Save as PDF prints it on one A4 page. The A/B plan has a live sample-size calculator.
+- Haptics on phones (with an off switch), reduced motion, keyboard use and screen readers are supported; axe reports no issues.
 
 ## Pages
 
@@ -22,14 +36,16 @@ A static site: plain HTML, one stylesheet, one script, charts drawn as inline SV
 | `kite.html` | Zerodha Kite onboarding audit |
 | `tagger.html` | Working AI prototype: a transaction tagger that learns |
 
-## Deploy on Vercel
+## Deploy
 
-1. Import this repo at vercel.com/new. Framework preset: **Other**. No build command, no output directory.
-2. Optional, to switch on the tagger's AI step: add `ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`) under Project Settings → Environment Variables, then redeploy. Without a key the tagger still works; only the AI button is off.
-3. Once the site has its final URL, make `og:image` absolute (`https://<domain>/assets/img/og.png`) so LinkedIn and WhatsApp previews show the share card.
+The repo is connected to Vercel (project `ankurroychowdhury`), so every push to `main` goes live in about a minute.
 
-`api/tag.js` is the only server code. It accepts at most 25 payee names, 60 characters each, and returns only whitelisted categories.
+Optional, to switch on the tagger's AI step: add `ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`) under Project Settings → Environment Variables, then redeploy. Without a key the tagger still works; only the AI button is off. `api/tag.js` is the only server code. It accepts at most 25 payee names, 60 characters each, and returns only whitelisted categories.
 
 ## Privacy
 
 No personal screenshots from Fold or Kite are published. The Amazon screenshots have the delivery address hidden, and image metadata is stripped.
+
+## Fonts
+
+Inter, Newsreader, Instrument Serif, DM Sans and Kalam, all self-hosted under the SIL Open Font License (licences in `assets/fonts`).
