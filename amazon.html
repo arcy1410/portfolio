@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Redesign: a product page built for deciding | Ankur Roy Chowdhury</title>
+<meta name="description" content="A teardown of one Amazon India product page and a redesign that puts the decision on the first screen.">
+<meta name="author" content="Ankur Roy Chowdhury">
+<meta property="og:title" content="Redesign: a product page built for deciding | Ankur Roy Chowdhury">
+<meta property="og:description" content="A teardown of one Amazon India product page and a redesign that puts the decision on the first screen.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="/">Ankur Roy Chowdhury</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/#work">Work</a><a href="/curio">Curio</a><a href="/fold">Fold</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+  </nav>
+  <div class="tools">
+    <button class="icon-btn" type="button" data-haptics-toggle hidden aria-pressed="true" aria-label="Turn haptics off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="3.5" width="8" height="17" rx="2.2"/><path class="i-wave" d="M4.6 9v6M19.4 9v6M1.9 10.6v2.8M22.1 10.6v2.8"/><path class="i-slash" d="M3.5 3.5l17 17"/></svg></button>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5h16M4 12h16M4 16.5h16"/></svg></button>
+  </div>
+</div></header>
+<dialog class="menu" aria-label="Menu">
+  <div class="menu-top"><a class="brand" href="/">Ankur Roy Chowdhury</a><button class="icon-btn" type="button" data-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <ul class="menu-list"><li style="--i:0"><a href="/curio">Curio<small>A live AI product with 120 users</small></a></li><li style="--i:1"><a href="/fold">Fold<small>From 50 reviews to an A/B test</small></a></li><li style="--i:2"><a href="/amazon" aria-current="page">Amazon redesign<small>A product page built for deciding</small></a></li><li style="--i:3"><a href="/kite">Kite onboarding audit<small>19 screens in 7 minutes</small></a></li><li style="--i:4"><a href="/tagger">Tagger prototype<small>An AI tagger that learns</small></a></li><li style="--i:5"><a href="/prioritization">Prioritization<small>10 ideas, 3 quick wins</small></a></li><li style="--i:6"><a href="/competitors">Competitors<small>Fold, INDmoney and CRED Money</small></a></li><li style="--i:7"><a href="/#about">About</a></li><li style="--i:8"><a href="/#contact">Contact</a></li></ul>
+</dialog>
+<main id="main">
+<article class="case">
+<header class="case-hero wrap">
+  <p class="crumb"><a href="/#work">Work</a> / Amazon redesign</p>
+  <h1 class="vt-landing" style="view-transition-name: t-amazon">Amazon's product page, built for deciding</h1>
+  <p class="dek">Amazon's product page makes it easy to buy and hard to decide. On a ₹529 sling bag, Buy Now appears on the third screen, after six price and urgency messages. The reviews that flag a weak lock and a disputed waterproof claim appear on the eleventh. My redesign puts the decision and the Buy button on the first screen.</p>
+  <dl class="facts"><div><dt>Surface</dt><dd>Amazon India app, product page</dd></div><div><dt>Evidence</dt><dd>15 screenshots, 24 blocks</dd></div><div><dt>Deliverable</dt><dd>Teardown and redesign</dd></div><div><dt>Date</dt><dd>31 Oct 2026</dd></div></dl>
+  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Problem</h2><p>Every block serves a team's clicks; nobody owns the shopper's decision.</p></li><li style="--r:0.7deg"><h2>Redesign</h2><p>Screen 1 answers: is it good, what does it cost, when will it arrive. Nothing is deleted; the rest moves lower.</p></li><li style="--r:-0.5deg"><h2>Test</h2><p>Purchases must hold; returns should fall; ad revenue is the guardrail.</p></li></ul>
+</header>
+<div class="wrap case-grid">
+<div class="body">
+
+<p class="note">A concept for a portfolio, not affiliated with Amazon. Screenshots are mine, from one product page; my delivery address is hidden.</p>
+<h2 id="today-s-page">Today's page</h2>
+<div class="shots">
+  <figure><img src="/assets/img/amazon-1.jpg" alt="Screen 1: a sponsored carousel for another brand above the product title, then the photo" loading="lazy" width="540"><figcaption>Screen 1: another brand's ad comes before the title</figcaption></figure>
+  <figure><img src="/assets/img/amazon-2.jpg" alt="Screen 2: colour picker, a deal countdown, price, UPI cashback and an offers carousel" loading="lazy" width="540"><figcaption>Screen 2: five numbers and a countdown</figcaption></figure>
+  <figure><img src="/assets/img/amazon-3.jpg" alt="Screen 3: a cashback progress bar, delivery details, then Add to cart and Buy Now" loading="lazy" width="540"><figcaption>Screen 3: Buy Now, finally</figcaption></figure>
+</div>
+<p>I mapped every block on the page in the order a shopper scrolls past it.</p>
+<figure class='figure' tabindex='0'><svg viewBox="0 0 760 740" role="img" aria-label="All 24 blocks on the product page in scroll order. Buy Now is block 12, after six price and urgency blocks. Reviews are blocks 23 and 24, after seven sponsored blocks."><rect x="24" y="14" width="12" height="12" rx="2" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.18"/><text x="42" y="25" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Sponsored</text><rect x="184" y="14" width="12" height="12" rx="2" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.18"/><text x="202" y="25" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Price, offers, urgency</text><rect x="344" y="14" width="12" height="12" rx="2" style="fill:var(--accent);stroke:var(--accent)" fill-opacity="0.18"/><text x="362" y="25" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Reviews</text><rect x="504" y="14" width="12" height="12" rx="2" fill="none" style="stroke:var(--ink)" stroke-width="2"/><text x="522" y="25" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Where you buy</text><rect x="24" y="60" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="75" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 1  Sponsored carousel: Explore more from another brand</text><rect x="24" y="88" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="103" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 2  Store, title, 4 stars (636), #1 Best Seller, 2K+ bought</text><rect x="24" y="116" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="131" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 3  Product photo</text><rect x="24" y="144" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="159" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 4  AI-suggested questions</text><rect x="24" y="172" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="187" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 5  Colour picker: 4 colours, ₹529 to ₹649, Limited time badge</text><rect x="24" y="200" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="215" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 6  Deal countdown: Ends in 02:51:51</text><rect x="24" y="228" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="243" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 7  Price: -74%, ₹529, M.R.P. ₹1,999 struck through</text><rect x="24" y="256" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="271" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 8  Pay ₹504 with UPI (₹25 cashback), Set up now</text><rect x="24" y="284" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="299" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" > 9  Offers carousel: Buy for ₹529 + ₹26 cashback</text><rect x="24" y="312" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="327" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >10  Shop for ₹2,500, get ₹250 cashback, progress bar</text><rect x="24" y="340" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="355" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >11  Free delivery today; Order within 7 mins</text><rect x="24" y="368" width="520" height="22" rx="6" fill="none" style="stroke:var(--ink)" stroke-width="2"/><text x="34" y="383" font-size="12" font-weight="600" style="fill:var(--ink)" text-anchor="start" >12  Quantity, Add to cart, Buy Now</text><rect x="24" y="396" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="411" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >13  Sold by, Wish List, Shop with confidence</text><rect x="24" y="424" width="520" height="22" rx="6" style="fill:var(--pr);stroke:var(--pr)" fill-opacity="0.16"/><text x="34" y="439" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >14  Save up to 15% with business pricing (GST)</text><rect x="24" y="452" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="467" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >15  Customers also bought: a bundle, two sponsored</text><rect x="24" y="480" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="495" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >16  You might also like (sponsored)</text><rect x="24" y="508" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="523" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >17  Top highlights (AI summary), description images</text><rect x="24" y="536" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="551" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >18  Sponsored ad: a running bag</text><rect x="24" y="564" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="579" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >19  Based on your recent views (sponsored)</text><rect x="24" y="592" width="520" height="22" rx="6" fill="none" style="stroke:var(--rule)"/><text x="34" y="607" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >20  Customers who bought this also bought</text><rect x="24" y="620" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="635" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >21  You might also like (sponsored)</text><rect x="24" y="648" width="520" height="22" rx="6" style="fill:var(--sp);stroke:var(--sp)" fill-opacity="0.16"/><text x="34" y="663" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >22  Shop by brand (sponsored)</text><rect x="24" y="676" width="520" height="22" rx="6" style="fill:var(--accent);stroke:var(--accent)" fill-opacity="0.16"/><text x="34" y="691" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >23  Customer reviews: 4.1; lock and zip quality mixed</text><rect x="24" y="704" width="520" height="22" rx="6" style="fill:var(--accent);stroke:var(--accent)" fill-opacity="0.16"/><text x="34" y="719" font-size="12" font-weight="400" style="fill:var(--ink)" text-anchor="start" >24  Top reviews, incl. “not water proof as written”</text><line x1="556" x2="556" y1="200" y2="362" style="stroke:var(--muted)" stroke-width="1.5"/><text x="566" y="75" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >Before the title</text><text x="566" y="266" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >6 price and</text><text x="566" y="282" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >urgency blocks</text><text x="566" y="383" font-size="13" font-weight="700" style="fill:var(--ink)" text-anchor="start" >Buy Now: screen 3</text><line x1="556" x2="556" y1="452" y2="670" style="stroke:var(--muted)" stroke-width="1.5"/><text x="566" y="546" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >7 sponsored blocks</text><text x="566" y="562" font-size="12" font-weight="400" style="fill:var(--muted)" text-anchor="start" >before the reviews</text><text x="566" y="691" font-size="13" font-weight="700" style="fill:var(--ink)" text-anchor="start" >Reviews: screen 11</text></svg><figcaption>From my screenshots of one Amazon India product page on 31 October 2026, with all 24 blocks in scroll order.</figcaption></figure>
+
+<h2 id="the-problem">The problem</h2>
+<ol>
+  <li><strong>Another seller's bag comes first.</strong> The first block, above even the product title, is a sponsored carousel for a different brand.</li>
+  <li><strong>Prices and urgency crowd the Buy button.</strong> Before Buy Now, a shopper meets five different numbers: ₹529, an M.R.P. of ₹1,999, ₹504 with UPI, ₹26 cashback and ₹250 back on ₹2,500, plus two timers. Even the cashback disagrees with itself: ₹25 in one block, ₹26 in the next.</li>
+  <li><strong>What decides the purchase comes last.</strong> The title says waterproof. The review summary says the lock and zips get mixed reviews, and a top review says the bag isn't waterproof as written. Both sit at the bottom, after seven sponsored blocks.</li>
+</ol>
+<p>My reading of why: each block likely belongs to a different team (ads, payments, deals, recommendations), and each optimizes its own clicks. Nobody owns the shopper's decision as a whole.</p>
+
+<h2 id="the-redesign">The redesign</h2>
+<div class="phones">
+
+<div class="phone" role="img" aria-label="Proposed first screen: product, What buyers say, colour, price, one offers line, delivery, Buy Now and Add to cart">
+ <div class="phone-inner" style="font-family:var(--font-body);font-size:13px;line-height:1.4;background:#fff;color:#16181D">
+  <div style="padding:10px 12px;border-bottom:1px solid #ECECEC"><div style="border:1px solid #D8D8D8;border-radius:999px;padding:7px 12px;color:#6B7079">Search</div></div>
+  <div style="padding:12px;display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:start">
+    <div style="width:88px;height:88px;border-radius:10px;background:#EEF0F3;display:flex;align-items:center;justify-content:center;color:#4B5159;font-size:11px">Photo</div>
+    <div>
+      <div style="font-weight:700;font-size:14px">Crossbody sling bag</div>
+      <div style="color:#5B616B;font-size:12px">Lock, USB port, water-resistant</div>
+      <div style="margin-top:4px">4.1 ★ <span style="color:#5B616B">from 636 ratings</span></div>
+      <div style="color:#5B616B;font-size:12px">#1 Best Seller, sling bags</div>
+    </div>
+  </div>
+  <div style="margin:0 12px;border:2px solid #245BFF;background:#E9EFFF;border-radius:10px;padding:10px 12px">
+    <div style="font-weight:700;margin-bottom:4px">What buyers say</div>
+    <div>✓ Good value and roomy, fine for travel</div>
+    <div>~ Mixed: lock and zip quality</div>
+    <div>! Some say it isn't fully waterproof</div>
+  </div>
+  <div style="padding:12px 12px 0">
+    <div style="font-size:12px;color:#5B616B">Colour: <b style="color:#16181D">Matte black</b></div>
+    <div style="display:flex;gap:6px;margin-top:6px">
+      <span style="border:2px solid #16181D;border-radius:8px;padding:5px 9px">₹529</span>
+      <span style="border:1px solid #D8D8D8;border-radius:8px;padding:5px 9px">₹649</span>
+      <span style="border:1px solid #D8D8D8;border-radius:8px;padding:5px 9px">₹649</span>
+      <span style="border:1px solid #D8D8D8;border-radius:8px;padding:5px 9px">₹649</span>
+    </div>
+  </div>
+  <div style="padding:12px">
+    <div><span style="font-size:24px;font-weight:700">₹529</span> <span style="color:#5B616B">74% off M.R.P. ₹1,999</span></div>
+    <div style="margin-top:4px;color:#245BFF;font-weight:600">4 offers, including cashback ›</div>
+    <div style="margin-top:2px">FREE delivery today, order within 7 mins</div>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="display:block;text-align:center;border-radius:999px;padding:10px;background:#16181D;color:#fff;font-weight:700">Buy Now</span>
+      <span style="display:block;text-align:center;border-radius:999px;padding:10px;border:1px solid #9AA0A9">Add to cart</span>
+    </div>
+  </div>
+  <div style="border-top:1px dashed #D0D0D0;margin:0 12px;padding:10px 0 14px;text-align:center;color:#6B7079;font-size:12px">Scroll for details and all reviews,<br>then recommendations and sponsored</div>
+ </div>
+</div>
+
+<div>
+  <h3>Five changes</h3>
+  <ol style="margin-top:12px;padding-left:20px;display:flex;flex-direction:column;gap:12px">
+    <li><strong>Review summary moves up,</strong> from screen 11 to screen 1, with the weak spots shown, not hidden.</li>
+    <li><strong>Buy Now moves up,</strong> from screen 3 to screen 1.</li>
+    <li><strong>Four offers become one line.</strong> UPI cashback, ₹26 back, ₹250 on ₹2,500 and GST pricing sit behind one tap.</li>
+    <li><strong>One time cue instead of two.</strong> The deal countdown goes; the delivery cutoff stays, because it's a real fact.</li>
+    <li><strong>Sponsored blocks move below reviews.</strong> All seven stay on the page, lower down.</li>
+  </ol>
+  <p style="margin-top:16px">The biggest change is honesty: showing the weak spots up front costs a few impulse sales, but should cut returns.</p>
+</div>
+</div>
+
+<h2 id="trade-offs-and-how-i-d-test-it">Trade-offs, and how I'd test it</h2>
+<p>Amazon earns money from every block I'm moving, so this can't be a pure design call. Sponsored placements are ad revenue, and the UPI offer grows Amazon Pay. I'd run it as an A/B test on product pages in one category before going wider.</p>
+<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Metric, Role, Why'><table><thead><tr><th scope='col'>Metric</th><th scope='col'>Role</th><th scope='col'>Why</th></tr></thead><tbody><tr><td>Purchases per product-page view</td><td><span class='pill good'>Primary</span></td><td>The redesign has to sell at least as well</td></tr><tr><td>Return rate within 10 days</td><td>Secondary</td><td>Shoppers who see the weak spots first should buy the right thing more often</td></tr><tr><td>Time from page open to purchase</td><td>Secondary</td><td>Less scrolling should mean faster decisions</td></tr><tr><td>Ad revenue per page view</td><td><span class='pill warn'>Guardrail</span></td><td>Sponsored blocks move lower, so this may fall</td></tr><tr><td>UPI payment setups</td><td><span class='pill warn'>Guardrail</span></td><td>The UPI offer moves behind one tap</td></tr></tbody></table></div>
+<p>If purchases hold and returns fall, the lower ad revenue is a cost worth debating, because fewer returns save money on every order.</p>
+<p class="note">Limits: this rests on one product page, seen on one phone during a festival sale. Amazon personalizes and tests its layouts, so other shoppers may see a different page.</p>
+</div><!--/body-->
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#today-s-page">Today's page</a></li><li><a href="#the-problem">The problem</a></li><li><a href="#the-redesign">The redesign</a></li><li><a href="#trade-offs-and-how-i-d-test-it">Trade-offs, and how I'd test it</a></li></ul></nav>
+</div>
+<div class="wrap"><nav class="next" aria-label="More case studies">
+  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
+  <a href="/kite"><span>Next case study</span><strong data-vt="kite">Opening a Zerodha Kite account: 19 screens in 7 minutes</strong></a>
+</nav></div>
+</article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div><strong>Ankur Roy Chowdhury</strong><span>Product portfolio, ISB Hyderabad</span></div>
+  <div class="foot-links"><a href="mailto:roy.chowdhury.ankur@gmail.com">roy.chowdhury.ankur@gmail.com</a><a href="tel:+918420474705">+91 84204 74705</a><a href="https://www.linkedin.com/in/ankurrc/">LinkedIn</a><a href="https://github.com/arcy1410">GitHub</a><a href="https://curio-three-iota.vercel.app/">Curio, live</a></div>
+</div></footer>
+</body>
+</html>

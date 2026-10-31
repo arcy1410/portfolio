@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curio case study | Ankur Roy Chowdhury</title>
+<meta name="description" content="How I took Curio, an AI-verified learning feed, from idea to 120 real users in three weeks.">
+<meta name="author" content="Ankur Roy Chowdhury">
+<meta property="og:title" content="Curio case study | Ankur Roy Chowdhury">
+<meta property="og:description" content="How I took Curio, an AI-verified learning feed, from idea to 120 real users in three weeks.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="/">Ankur Roy Chowdhury</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/#work">Work</a><a href="/curio" aria-current="page">Curio</a><a href="/fold">Fold</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+  </nav>
+  <div class="tools">
+    <button class="icon-btn" type="button" data-haptics-toggle hidden aria-pressed="true" aria-label="Turn haptics off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="3.5" width="8" height="17" rx="2.2"/><path class="i-wave" d="M4.6 9v6M19.4 9v6M1.9 10.6v2.8M22.1 10.6v2.8"/><path class="i-slash" d="M3.5 3.5l17 17"/></svg></button>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5h16M4 12h16M4 16.5h16"/></svg></button>
+  </div>
+</div></header>
+<dialog class="menu" aria-label="Menu">
+  <div class="menu-top"><a class="brand" href="/">Ankur Roy Chowdhury</a><button class="icon-btn" type="button" data-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <ul class="menu-list"><li style="--i:0"><a href="/curio" aria-current="page">Curio<small>A live AI product with 120 users</small></a></li><li style="--i:1"><a href="/fold">Fold<small>From 50 reviews to an A/B test</small></a></li><li style="--i:2"><a href="/amazon">Amazon redesign<small>A product page built for deciding</small></a></li><li style="--i:3"><a href="/kite">Kite onboarding audit<small>19 screens in 7 minutes</small></a></li><li style="--i:4"><a href="/tagger">Tagger prototype<small>An AI tagger that learns</small></a></li><li style="--i:5"><a href="/prioritization">Prioritization<small>10 ideas, 3 quick wins</small></a></li><li style="--i:6"><a href="/competitors">Competitors<small>Fold, INDmoney and CRED Money</small></a></li><li style="--i:7"><a href="/#about">About</a></li><li style="--i:8"><a href="/#contact">Contact</a></li></ul>
+</dialog>
+<main id="main">
+<article class="case">
+<header class="case-hero wrap">
+  <p class="crumb"><a href="/#work">Work</a> / Curio</p>
+  <img class="case-mark" src="/assets/img/curio-mark.png" alt="Curio logo" width="56" height="56"><h1 class="vt-landing" style="view-transition-name: t-curio">Curio: a learning feed people actually use</h1>
+  <p class="dek">I took Curio from idea to a live product with 120 real users in about three weeks. It's a swipeable feed of two-minute knowledge cards, each fact-checked by AI before it ships: the Reels habit, with a payoff you remember.</p>
+  <dl class="facts"><div><dt>Role</dt><dd>My idea; I led it end to end</dd></div><div><dt>When</dt><dd>Jul–Aug 2026, live since 22 Jul</dd></div><div><dt>Context</dt><dd>ISB, Software Product Management</dd></div><div><dt>Outcome</dt><dd>A grade, 120 users</dd></div></dl>
+  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Problem</h2><p>Short video eats hours and leaves nothing. Learning content is &ldquo;either baby-food or a lecture,&rdquo; and AI-written content fails on trust.</p></li><li style="--r:0.7deg"><h2>What I did</h2><p>Ran the interviews, wrote the spec and metrics, and built it with Claude Code: a feed where every card is verified against its source before anyone sees it.</p></li><li style="--r:-0.5deg"><h2>Result</h2><p>Activation and sign-in beat targets. Bringing users back did not, and that became the next thing to fix.</p></li></ul>
+</header>
+<div class="wrap case-grid">
+<div class="body">
+
+<h2 id="my-role">My role</h2>
+<p>Curio was my idea, and I led it end to end: discovery interviews, the product spec, the metrics framework, and the build itself, which I did with Claude Code. It was my term project for Software Product Management at ISB. The course asked for a real product with real users and real metrics by Demo Day, not a plan. Curio earned an A, with excellent reviews at Demo Day, where it was called a <span class="hl">production-ready MVP</span>.</p>
+
+<h2 id="the-problem">The problem</h2>
+<p>Young Indians spend two or more hours a day on short videos and come away with nothing. I interviewed three people in the target group, and all three described the same gap without being prompted:</p>
+<ul>
+  <li><strong>The gap:</strong> content is &ldquo;either baby-food or a lecture,&rdquo; with nothing in between for an intelligent beginner.</li>
+  <li><strong>The trust gate:</strong> for AI-written content, trust is pass or fail.</li>
+  <li><strong>The habit:</strong> &ldquo;My thumb just did it.&rdquo; Nobody needs to be taught to swipe.</li>
+</ul>
+<blockquote>&ldquo;I don't have an attention problem, I have a trust problem. One wrong claim and I'm out.&rdquo;<cite>Interviewee, discovery round</cite></blockquote>
+<p>The interviews changed my thesis. I started out betting on guilt after scrolling, but one interviewee rejected it outright. The stronger driver was wanting to be &ldquo;interesting outside my one thing.&rdquo; So Curio keeps the swipe and changes what it pays: short, sourced cards that treat people as intelligent beginners.</p>
+<p class="note">The sample is small: three people, all men aged 24 to 28. I named that as a limitation, and the next round targets the younger half of the 18 to 30 audience.</p>
+
+<h2 id="what-i-built">What I built</h2>
+<p>Curio has been live since 22 July 2026, as a web app that also installs on phones. Every card opens as a question, so reading becomes recall practice rather than passive scrolling.</p>
+<ul>
+  <li><strong>Personalized feed:</strong> topic weights shift with each swipe, and the feed visibly tunes toward your interests after about 10 swipes.</li>
+  <li><strong>Typed quizzes:</strong> guess the answer, get judged instantly, then see the sourced explanation.</li>
+  <li><strong>Kept pile with spaced repetition:</strong> saved cards fade and resurface for review, instead of piling up unread.</li>
+  <li><strong>Self-refilling feed:</strong> when you run out, Curio writes and fact-checks 10 new cards for your interests on demand.</li>
+  <li><strong>Anonymous-first sign-in:</strong> Google sign-in only after 3 swipes, plus a mocked ₹149-a-month premium tier.</li>
+</ul>
+<div class="callout"><strong>The trust pipeline is the core.</strong>Each card is drawn from a real source, written by one AI model, then checked claim by claim against that source by a second model. A card that fails the check never reaches users: the database itself makes unverified cards unreadable. 64 verified cards across six topics were live by Demo Day.</div>
+<p class="note">Built with React, Supabase, Vercel and PostHog (37 named events), using Claude Code.</p>
+
+<h2 id="key-decisions">Key decisions</h2>
+<p>The hardest calls were about what not to optimize for.</p>
+<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Decision, Why'><table><thead><tr><th scope='col'>Decision</th><th scope='col'>Why</th></tr></thead><tbody><tr><td>North Star: cards retained per weekly active user, not swipes or time spent</td><td>Curio promises facts that stick. A metric that rewards 200 forgotten swipes would turn it into the thing it replaces</td></tr><tr><td>Session length is a ceiling (6-minute median), not a target</td><td>A learning feed should let you leave on time. Longer sessions count as failure</td></tr><tr><td>No streak-loss guilt or fear-of-missing-out notifications</td><td>The product reuses the Reels habit loop, so I drew a clear line against dark patterns</td></tr><tr><td>The fact-checker must be a reasoning model</td><td>Faster models flagged true claims as unsupported on long sources, such as a phrase quoted word for word from Wikipedia. A reasoning model got it right, at about 7 seconds instead of 1</td></tr><tr><td>Unverified cards blocked by the database, not by the app</td><td>Trust is pass or fail, so it had to be a rule nothing can bypass</td></tr><tr><td>Sign-in moved from 7 swipes to 3, kept only if 30% or more convert</td><td>Earlier sign-in saves more users' data; below 30% it costs more users than it keeps</td></tr><tr><td>Fix personalization with more content, not a new algorithm</td><td>Analysis showed 74% of simulated users ran out of their favourite topic within 9 swipes. Ten cards per topic took that to 0%</td></tr></tbody></table></div>
+
+<h2 id="results">Results</h2>
+<p>In three weeks, 120 real users generated 4,884 tracked events. Activation and sign-in beat their targets; bringing users back did not. Mostly classmates and testers used it, so I read these as a pilot baseline, not traction.</p>
+<div class='table-wrap' tabindex='0' role='region' aria-label='Table: Metric, Result, Target'><table><thead><tr><th scope='col'>Metric</th><th scope='col'>Result</th><th scope='col'>Target</th><th scope='col'></th></tr></thead><tbody><tr><td>Starts that reach a first card</td><td class='num'>79%</td><td>75% or more</td><td><span class='pill good'>Beat</span></td></tr><tr><td>Median time to first card</td><td class='num'>19 seconds</td><td>Under 60 seconds</td><td><span class='pill good'>Beat</span></td></tr><tr><td>Users at the sign-in gate who sign in</td><td class='num'>43%</td><td>30% or more</td><td><span class='pill good'>Beat</span></td></tr><tr><td>Median session</td><td class='num'>About 1 minute</td><td>Ceiling of 6 minutes</td><td><span class='pill good'>Within</span></td></tr><tr><td>Interested vs. pass swipes</td><td class='num'>1.9 to 1</td><td>None set</td><td></td></tr><tr><td>Readers who save at least one card</td><td class='num'>30%</td><td>None set</td><td></td></tr><tr><td>Cards retained per weekly active user (North Star)</td><td class='num'>About 0: 4 of 27 savers came back</td><td>3 at three months</td><td><span class='pill bad'>Missed</span></td></tr></tbody></table></div>
+<p class="note">All figures are from PostHog production data, 22 July to 11 August 2026. <a href="https://curio-three-iota.vercel.app/metrics.html">See the live metrics page ↗</a></p>
+
+<h2 id="what-the-data-taught-me">What the data taught me</h2>
+<ol>
+  <li><strong>The biggest leak comes before the first tap.</strong> <span class="hl">25% of visitors</span> left on the intro screen without touching a topic (114 down to 85). They never reached the choices, so the fix is to open on the topic picker, which is the next A/B test.</li>
+  <li><strong>The North Star reads near zero, and that is the finding.</strong> 27 people saved cards and only 4 came back to one, because nothing brings users back yet. I shipped the recall quiz and the self-refilling feed, and saves rose from 8 to 29 in the last week.</li>
+  <li><strong>Running out of cards was the real churn.</strong> Most pilot users read the whole library, so sessions ended from exhaustion, not boredom. I moved card generation to the moment of demand.</li>
+</ol>
+<p>Two real testers also found two sign-in bugs that desktop testing had missed. Both were fixed the same day.</p>
+<p><strong>Next:</strong> test opening on the topic picker, build a reason to return without guilt-based notifications, and run five to seven more interviews with younger users and women.</p>
+
+<h2 id="links">Links</h2>
+<ul>
+  <li><a href="https://curio-three-iota.vercel.app/">Curio, the live app ↗</a></li>
+  <li><a href="https://curio-three-iota.vercel.app/metrics.html">Live metrics page ↗</a></li>
+  <li><a href="https://github.com/arcy1410/Curio">Source code on GitHub ↗</a></li>
+</ul>
+</div><!--/body-->
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#my-role">My role</a></li><li><a href="#the-problem">The problem</a></li><li><a href="#what-i-built">What I built</a></li><li><a href="#key-decisions">Key decisions</a></li><li><a href="#results">Results</a></li><li><a href="#what-the-data-taught-me">What the data taught me</a></li><li><a href="#links">Links</a></li></ul></nav>
+</div>
+<div class="wrap"><nav class="next" aria-label="More case studies">
+  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
+  <a href="/fold"><span>Next case study</span><strong data-vt="fold">Fold: warn users when a bank goes quiet</strong></a>
+</nav></div>
+</article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div><strong>Ankur Roy Chowdhury</strong><span>Product portfolio, ISB Hyderabad</span></div>
+  <div class="foot-links"><a href="mailto:roy.chowdhury.ankur@gmail.com">roy.chowdhury.ankur@gmail.com</a><a href="tel:+918420474705">+91 84204 74705</a><a href="https://www.linkedin.com/in/ankurrc/">LinkedIn</a><a href="https://github.com/arcy1410">GitHub</a><a href="https://curio-three-iota.vercel.app/">Curio, live</a></div>
+</div></footer>
+</body>
+</html>

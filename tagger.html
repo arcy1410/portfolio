@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI prototype: a tagger that learns | Ankur Roy Chowdhury</title>
+<meta name="description" content="A working prototype that tags Indian bank transactions with keyword rules, an AI model, and user corrections.">
+<meta name="author" content="Ankur Roy Chowdhury">
+<meta property="og:title" content="AI prototype: a tagger that learns | Ankur Roy Chowdhury">
+<meta property="og:description" content="A working prototype that tags Indian bank transactions with keyword rules, an AI model, and user corrections.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23192890'/%3E%3Crect x='14' y='40' width='36' height='8' rx='1' fill='%23BFFF87'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='600' text-anchor='middle' fill='%23FFFFFF'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')r.setAttribute('data-theme',t)}catch(e){}try{if(document.referrer&&new URL(document.referrer).origin===location.origin)r.classList.add('no-intro')}catch(e){}})();</script>
+<script src="/assets/site.js" defer></script>
+<style>
+.tg-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tg-tile { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; }
+.tg-tile .k { font-size: 13px; color: var(--muted); }
+.tg-tile .v { font-family: var(--font-display); font-size: 32px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tg-tile .s { font-size: 13px; color: var(--muted); }
+.tg-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tg-actions .btn { font-size: 14px; }
+.tg-actions .btn:disabled { opacity: 0.5; cursor: default; }
+.tg-cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+.tg-main { flex: 999 1 600px; min-width: 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; }
+.tg-side { flex: 1 1 260px; display: flex; flex-direction: column; gap: 16px; }
+.tg-panel { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.tg-panel h3, .tg-head h3 { font-size: 17px; }
+.tg-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.tg-month { font-family: var(--font-mono); padding: 10px 16px 4px; color: var(--muted); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+.tg-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) 88px 180px 22px; gap: 12px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.tg-date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tg-narr { font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere; }
+.tg-why { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.tg-amt { font-variant-numeric: tabular-nums; text-align: right; }
+.tg-amt.in { color: var(--good); }
+.tg-tag { display: flex; flex-direction: column; gap: 4px; }
+.tg-tag select { font: inherit; font-size: 14px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); width: 100%; }
+.chip { font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; align-self: flex-start; border: 1px solid var(--rule); color: var(--muted); }
+.chip.ai { border-color: var(--accent); color: var(--accent); }
+.chip.rule { background: var(--accent); border-color: var(--accent); color: var(--card); }
+.chip.none { background: var(--warn-soft); border-color: var(--warn-soft); color: var(--warn); }
+.mark { font-weight: 700; text-align: center; }
+.mark.ok { color: var(--good); } .mark.no { color: var(--bad); }
+.tg-confirm { grid-column: 1 / -1; background: var(--tint); border-radius: 10px; padding: 10px 12px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.tg-confirm .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.tg-confirm .btn { min-height: 36px; padding: 6px 14px; font-size: 13px; }
+.rule-item { display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: 14px; border-top: 1px solid var(--rule); padding-top: 8px; }
+.rule-item .p { font-family: var(--font-mono); font-size: 12px; }
+.rule-item .btn { min-height: 32px; padding: 4px 12px; font-size: 13px; }
+ol.tg-log { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.sr { position: absolute; left: -9999px; }
+@media (max-width: 720px) {
+  .tg-tiles { grid-template-columns: 1fr; }
+  .tg-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .tg-row .tg-date { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="/">Ankur Roy Chowdhury</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/#work">Work</a><a href="/curio">Curio</a><a href="/fold">Fold</a><a href="/#about">About</a><a href="/#contact">Contact</a>
+  </nav>
+  <div class="tools">
+    <button class="icon-btn" type="button" data-haptics-toggle hidden aria-pressed="true" aria-label="Turn haptics off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="3.5" width="8" height="17" rx="2.2"/><path class="i-wave" d="M4.6 9v6M19.4 9v6M1.9 10.6v2.8M22.1 10.6v2.8"/><path class="i-slash" d="M3.5 3.5l17 17"/></svg></button>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+    <button class="icon-btn menu-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5h16M4 12h16M4 16.5h16"/></svg></button>
+  </div>
+</div></header>
+<dialog class="menu" aria-label="Menu">
+  <div class="menu-top"><a class="brand" href="/">Ankur Roy Chowdhury</a><button class="icon-btn" type="button" data-close aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <ul class="menu-list"><li style="--i:0"><a href="/curio">Curio<small>A live AI product with 120 users</small></a></li><li style="--i:1"><a href="/fold">Fold<small>From 50 reviews to an A/B test</small></a></li><li style="--i:2"><a href="/amazon">Amazon redesign<small>A product page built for deciding</small></a></li><li style="--i:3"><a href="/kite">Kite onboarding audit<small>19 screens in 7 minutes</small></a></li><li style="--i:4"><a href="/tagger" aria-current="page">Tagger prototype<small>An AI tagger that learns</small></a></li><li style="--i:5"><a href="/prioritization">Prioritization<small>10 ideas, 3 quick wins</small></a></li><li style="--i:6"><a href="/competitors">Competitors<small>Fold, INDmoney and CRED Money</small></a></li><li style="--i:7"><a href="/#about">About</a></li><li style="--i:8"><a href="/#contact">Contact</a></li></ul>
+</dialog>
+<main id="main">
+<article class="case">
+<header class="case-hero wrap">
+  <p class="crumb"><a href="/#work">Work</a> / Tagger prototype</p>
+  <h1 class="vt-landing" style="view-transition-name: t-tagger">A transaction tagger that learns</h1>
+  <p class="dek">Bank statements often print a company's registered name, not its brand: Swiggy appears as BUNDL TECHNOLOGIES, Ola as ANI TECHNOLOGIES. This working prototype starts with keyword rules, asks an AI model about the merchants those miss, and turns each of your corrections into a rule for that merchant, past and future.</p>
+  <dl class="facts"><div><dt>Type</dt><dd>Working AI prototype</dd></div><div><dt>Data</dt><dd>34 invented sample transactions</dd></div><div><dt>Baseline</dt><dd>Keywords alone: 11 of 24 right</dd></div><div><dt>Built</dt><dd>Oct 2026, with Claude</dd></div></dl>
+  <ul class="inshort" aria-label="In short"><li style="--r:-1.1deg"><h2>Why</h2><p>In my own October spending, Untagged was the largest category. Wrong categories were Fold's top-scoring review theme.</p></li><li style="--r:0.7deg"><h2>How</h2><p>Three layers: keyword rules, then an LLM for legal names, then your corrections saved as merchant rules.</p></li><li style="--r:-0.5deg"><h2>Score</h2><p>Every tag is checked against my own hand labels, so you can watch accuracy move.</p></li></ul>
+</header>
+<div class="wrap case-grid">
+<div class="body">
+
+<h2 id="try-it">Try it</h2>
+<p>Click <strong>Ask AI</strong>, fix anything still wrong, then bring in next month and see how much it tags with no new work. All transactions are invented sample data.</p>
+<section class="tg-tiles" aria-label="Score">
+  <div class="tg-tile"><div class="k">Tagged correctly</div><div class="v" id="acc">0%</div><div class="s" id="accSub"></div></div>
+  <div class="tg-tile"><div class="k">Still untagged</div><div class="v" id="untagged">0</div><div class="s">transactions with no category</div></div>
+  <div class="tg-tile"><div class="k">Corrections you made</div><div class="v" id="fixes">0</div><div class="s">each one teaches a merchant</div></div>
+</section>
+<div class="tg-actions">
+  <button class="btn solid" id="askAi" type="button">Ask AI about untagged merchants</button>
+  <button class="btn" id="nextMonth" type="button">Bring in next month</button>
+  <button class="btn" id="reset" type="button">Start over</button>
+  <span class="note" id="status" role="status"></span>
+</div>
+<div class="tg-cols">
+  <section class="tg-main" aria-label="Transactions">
+    <div class="tg-head"><h3>Statement</h3><label class="note" for="showKey" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="showKey" checked> Check against my labels</label></div>
+    <div id="list"></div>
+  </section>
+  <aside class="tg-side">
+    <section class="tg-panel"><h3>Rules you taught it</h3><p class="note" id="noRules">None yet. Change a wrong category to teach one.</p><div id="rules"></div></section>
+    <section class="tg-panel"><h3>How the score moved</h3><ol class="tg-log" id="log"></ol></section>
+  </aside>
+</div>
+
+<h2 id="how-it-works">How it works</h2>
+<ol>
+  <li><strong>Keyword rules first.</strong> Cheap and predictable: SWIGGY, UBER, NETFLIX. They get 11 of 24 October transactions right (46%), and they get some wrong: &ldquo;INNOVATIVE RETAIL CONCEPTS&rdquo; matches RETAIL and lands in Shopping, but it's BigBasket, which is Groceries.</li>
+  <li><strong>An AI model for the legal names.</strong> Only merchants the keywords can't place go to the model, with a fixed list of categories and an instruction to answer &ldquo;Untagged&rdquo; when unsure. It returns a short reason, shown under the transaction, so a wrong guess is easy to spot.</li>
+  <li><strong>Your corrections become rules.</strong> Change a category and it asks whether to apply it to every transaction from that merchant, including future ones. That's the step that compounds: next month needs no new work for merchants you've taught.</li>
+</ol>
+<div class="callout"><strong>What I'd want to learn from real users</strong>Whether people trust an AI reason enough to leave a tag alone, and how many corrections it takes before Untagged stops being their biggest category. The order of layers matters too: user rules always win over the model, so a correction is never overridden.</div>
+<p class="note">Built by Claude to my spec. The AI step runs through a small server function, so the page never holds an API key.</p>
+<script>
+const CATS = ["Food & Drinks", "Groceries", "Transport", "Travel", "Bills", "Shopping", "Entertainment", "Medical", "Investments", "Transfers", "Income"];
+
+const KEYWORDS = [
+  ["SALARY", "Income"], ["SWIGGY", "Food & Drinks"], ["ZOMATO", "Food & Drinks"], ["STARBUCKS", "Food & Drinks"],
+  ["UBER", "Transport"], ["RAPIDO", "Transport"], ["IRCTC", "Travel"], ["MAKEMYTRIP", "Travel"],
+  ["NETFLIX", "Entertainment"], ["PVR", "Entertainment"], ["APOLLO", "Medical"], ["PHARMAC", "Medical"],
+  ["CREDIT CARD", "Bills"], ["ELECTRICITY", "Bills"], ["RETAIL", "Shopping"], ["AMAZON", "Shopping"],
+  ["ZERODHA", "Investments"], ["GROWW", "Investments"]
+];
+
+const OCT = [
+  ["2026-10-01", "NEFT/N274261183/ACME TECH PVT LTD/SALARY OCT", "ACME TECH PVT LTD", 85000, "Income"],
+  ["2026-10-02", "UPI/429381726154/BUNDL TECHNOLOGIES/swiggy order", "BUNDL TECHNOLOGIES", -412, "Food & Drinks"],
+  ["2026-10-04", "UPI/429410238871/BUNDL TECHNOLOGIES/UPI", "BUNDL TECHNOLOGIES", -389, "Food & Drinks"],
+  ["2026-10-05", "UPI/429455120938/INNOVATIVE RETAIL CONCEPTS/UPI", "INNOVATIVE RETAIL CONCEPTS", -1846, "Groceries"],
+  ["2026-10-06", "UPI/429501873266/ANI TECHNOLOGIES PVT LTD/ride", "ANI TECHNOLOGIES PVT LTD", -236, "Transport"],
+  ["2026-10-07", "UPI/429533012784/UBER INDIA SYSTEMS/UPI", "UBER INDIA SYSTEMS", -318, "Transport"],
+  ["2026-10-08", "UPI/429570046512/BLINK COMMERCE PVT LTD/UPI", "BLINK COMMERCE PVT LTD", -654, "Groceries"],
+  ["2026-10-09", "ACH/HDFC CREDIT CARD BILL/AUTOPAY", "HDFC CREDIT CARD BILL", -18500, "Bills"],
+  ["2026-10-10", "UPI/429612347765/ETERNAL LIMITED/UPI", "ETERNAL LIMITED", -527, "Food & Drinks"],
+  ["2026-10-11", "UPI/429650981123/APOLLO PHARMACIES LTD/UPI", "APOLLO PHARMACIES LTD", -780, "Medical"],
+  ["2026-10-12", "UPI/429688120456/RAMESH KUMAR/rent share", "RAMESH KUMAR", -9000, "Transfers"],
+  ["2026-10-13", "UPI/429701238890/INNOVATIVE RETAIL CONCEPTS/UPI", "INNOVATIVE RETAIL CONCEPTS", -2210, "Groceries"],
+  ["2026-10-14", "UPI/429745561230/IRCTC/ticket", "IRCTC", -1455, "Travel"],
+  ["2026-10-15", "UPI/429790012347/BUNDL TECHNOLOGIES/UPI", "BUNDL TECHNOLOGIES", -298, "Food & Drinks"],
+  ["2026-10-16", "UPI/429811230984/NETFLIX COM/UPI", "NETFLIX COM", -649, "Entertainment"],
+  ["2026-10-17", "UPI/429855671234/BLINK COMMERCE PVT LTD/UPI", "BLINK COMMERCE PVT LTD", -432, "Groceries"],
+  ["2026-10-18", "UPI/429890014562/RELIANCE RETAIL LTD/jiomart", "RELIANCE RETAIL LTD", -1120, "Groceries"],
+  ["2026-10-19", "UPI/429912356781/ANI TECHNOLOGIES PVT LTD/UPI", "ANI TECHNOLOGIES PVT LTD", -184, "Transport"],
+  ["2026-10-20", "UPI/429956780012/ZERODHA BROKING LTD/UPI", "ZERODHA BROKING LTD", -5000, "Investments"],
+  ["2026-10-21", "UPI/429990123456/TATA STARBUCKS PVT LTD/UPI", "TATA STARBUCKS PVT LTD", -395, "Food & Drinks"],
+  ["2026-10-22", "UPI/430012345678/ETERNAL LIMITED/UPI", "ETERNAL LIMITED", -612, "Food & Drinks"],
+  ["2026-10-23", "UPI/430056712349/BANGALORE ELECTRICITY SUPPLY/BESCOM", "BANGALORE ELECTRICITY SUPPLY", -1284, "Bills"],
+  ["2026-10-25", "UPI/430090123478/INNOVATIVE RETAIL CONCEPTS/UPI", "INNOVATIVE RETAIL CONCEPTS", -1390, "Groceries"],
+  ["2026-10-27", "UPI/430123456712/AMAZON PAY INDIA/UPI", "AMAZON PAY INDIA", -899, "Shopping"]
+];
+
+const NOV = [
+  ["2026-11-01", "NEFT/N281734502/ACME TECH PVT LTD/SALARY NOV", "ACME TECH PVT LTD", 85000, "Income"],
+  ["2026-11-02", "UPI/431002934411/BUNDL TECHNOLOGIES/UPI", "BUNDL TECHNOLOGIES", -356, "Food & Drinks"],
+  ["2026-11-03", "UPI/431045120098/INNOVATIVE RETAIL CONCEPTS/UPI", "INNOVATIVE RETAIL CONCEPTS", -1980, "Groceries"],
+  ["2026-11-04", "UPI/431078234561/ANI TECHNOLOGIES PVT LTD/UPI", "ANI TECHNOLOGIES PVT LTD", -210, "Transport"],
+  ["2026-11-05", "UPI/431101239987/BLINK COMMERCE PVT LTD/UPI", "BLINK COMMERCE PVT LTD", -512, "Groceries"],
+  ["2026-11-06", "UPI/431134561200/RELIANCE RETAIL LTD/jiomart", "RELIANCE RETAIL LTD", -860, "Groceries"],
+  ["2026-11-07", "UPI/431167890034/ETERNAL LIMITED/UPI", "ETERNAL LIMITED", -455, "Food & Drinks"],
+  ["2026-11-08", "UPI/431190012876/UBER INDIA SYSTEMS/UPI", "UBER INDIA SYSTEMS", -290, "Transport"],
+  ["2026-11-09", "UPI/431223450981/KIRANAKART TECHNOLOGIES/UPI", "KIRANAKART TECHNOLOGIES", -640, "Groceries"],
+  ["2026-11-10", "UPI/431256781234/APOLLO PHARMACIES LTD/UPI", "APOLLO PHARMACIES LTD", -1150, "Medical"]
+];
+
+let state;
+function fresh() {
+  return {
+    txns: OCT.map((t, i) => ({ id: "o" + i, month: "October 2026", date: t[0], narr: t[1], payee: t[2], amt: t[3], truth: t[4], override: null })),
+    rules: {},      // payee -> category, taught by the user
+    ai: {},         // payee -> {category, reason}, remembered Claude guesses
+    novAdded: false,
+    pending: null,  // {id, category}
+    fixes: 0,
+    log: []
+  };
+}
+
+function keyword(t) {
+  const s = t.narr.toUpperCase();
+  for (const [k, c] of KEYWORDS) { if (s.includes(k)) return c; }
+  return null;
+}
+
+function resolve(t) {
+  if (t.override) return { cat: t.override, src: "you", label: "Your fix" };
+  if (state.rules[t.payee]) return { cat: state.rules[t.payee], src: "rule", label: "Your rule" };
+  const k = keyword(t);
+  if (k) return { cat: k, src: "kw", label: "Keyword" };
+  const a = state.ai[t.payee];
+  if (a && a.category !== "Untagged") return { cat: a.category, src: "ai", label: "AI", reason: a.reason };
+  return { cat: null, src: "none", label: "Untagged" };
+}
+
+function score() {
+  const all = state.txns;
+  let ok = 0, none = 0;
+  for (const t of all) { const r = resolve(t); if (!r.cat) none++; else if (r.cat === t.truth) ok++; }
+  return { ok, none, total: all.length, pct: all.length ? Math.round(100 * ok / all.length) : 0 };
+}
+
+function addLog(text) {
+  const s = score();
+  state.log.push({ text, ok: s.ok, total: s.total, pct: s.pct });
+}
+
+function fmt(n) {
+  const abs = Math.abs(n).toLocaleString("en-IN");
+  return (n < 0 ? "−₹" : "+₹") + abs;
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function render() {
+  const s = score();
+  document.getElementById("acc").textContent = s.pct + "%";
+  document.getElementById("accSub").textContent = s.ok + " of " + s.total + " match my labels";
+  document.getElementById("untagged").textContent = s.none;
+  document.getElementById("fixes").textContent = state.fixes;
+  document.getElementById("nextMonth").disabled = state.novAdded;
+  const showKey = document.getElementById("showKey").checked;
+
+  let html = "", lastMonth = "";
+  for (const t of state.txns) {
+    if (t.month !== lastMonth) { html += '<div class="tg-month">' + t.month + '</div>'; lastMonth = t.month; }
+    const r = resolve(t);
+    const chipClass = r.src === "ai" ? "chip ai" : (r.src === "rule" || r.src === "you") ? "chip rule" : r.src === "none" ? "chip none" : "chip";
+    const opts = '<option value="">Untagged</option>' + CATS.map(c => '<option' + (c === r.cat ? " selected" : "") + '>' + esc(c) + '</option>').join("");
+    const mark = !showKey ? "" : (!r.cat ? '<span class="mark no" title="Untagged">·</span>' : r.cat === t.truth ? '<span class="mark ok" title="Matches my label">✓</span>' : '<span class="mark no" title="My label: ' + esc(t.truth) + '">✗</span>');
+    html += '<div class="tg-row">' +
+      '<div class="tg-date">' + t.date.slice(8) + ' ' + t.month.slice(0, 3) + '</div>' +
+      '<div><div class="tg-narr">' + esc(t.narr) + '</div>' + (r.reason ? '<div class="tg-why">AI: ' + esc(r.reason) + '</div>' : '') + '</div>' +
+      '<div class="tg-amt' + (t.amt > 0 ? " in" : "") + '">' + fmt(t.amt) + '</div>' +
+      '<div class="tg-tag"><label class="sr" for="sel-' + t.id + '">Category for ' + esc(t.payee) + '</label><select id="sel-' + t.id + '" data-id="' + t.id + '">' + opts + '</select><span class="' + chipClass + '">' + r.label + '</span></div>' +
+      '<div>' + mark + '</div>';
+    if (state.pending && state.pending.id === t.id) {
+      const n = state.txns.filter(x => x.payee === t.payee).length;
+      html += '<div class="tg-confirm"><p>Tag all ' + n + ' transaction' + (n === 1 ? "" : "s") + ' from <b>' + esc(t.payee) + '</b> as <b>' + esc(state.pending.category) + '</b>, including future ones?</p>' +
+        '<div class="btns"><button class="btn solid" type="button" data-act="all">Yes, remember it</button><button class="btn" type="button" data-act="one">Just this one</button><button class="btn" type="button" data-act="cancel">Cancel</button></div></div>';
+    }
+    html += '</div>';
+  }
+  document.getElementById("list").innerHTML = html;
+
+  const rulesEl = document.getElementById("rules");
+  const payees = Object.keys(state.rules);
+  document.getElementById("noRules").hidden = payees.length > 0;
+  rulesEl.innerHTML = payees.map(p => '<div class="rule-item"><div><div class="p">' + esc(p) + '</div><div>→ ' + esc(state.rules[p]) + '</div></div><button class="btn" type="button" data-undo="' + esc(p) + '">Undo</button></div>').join("");
+
+  document.getElementById("log").innerHTML = state.log.map(l => '<li>' + esc(l.text) + ': <b>' + l.ok + ' of ' + l.total + '</b> (' + l.pct + '%)</li>').join("");
+}
+
+document.getElementById("list").addEventListener("change", e => {
+  const sel = e.target.closest("select[data-id]");
+  if (!sel) return;
+  const t = state.txns.find(x => x.id === sel.dataset.id);
+  if (!sel.value) { t.override = null; state.pending = null; render(); return; }
+  state.pending = { id: t.id, category: sel.value };
+  if (window.haptics) haptics.tick();
+  render();
+});
+
+document.getElementById("list").addEventListener("click", e => {
+  const b = e.target.closest("button[data-act]");
+  if (!b || !state.pending) return;
+  const t = state.txns.find(x => x.id === state.pending.id);
+  const cat = state.pending.category;
+  if (b.dataset.act === "all") {
+    const n = state.txns.filter(x => x.payee === t.payee).length;
+    state.txns.forEach(x => { if (x.payee === t.payee) x.override = null; });
+    state.rules[t.payee] = cat;
+    state.fixes++;
+    state.pending = null;
+    if (window.haptics) haptics.success();
+    addLog("You taught " + t.payee + " → " + cat + " (" + n + " transaction" + (n === 1 ? "" : "s") + ")");
+  } else if (b.dataset.act === "one") {
+    t.override = cat;
+    state.fixes++;
+    state.pending = null;
+    if (window.haptics) haptics.tap();
+    addLog("You fixed one " + t.payee + " transaction");
+  } else {
+    state.pending = null;
+  }
+  render();
+});
+
+document.getElementById("rules").addEventListener("click", e => {
+  const b = e.target.closest("button[data-undo]");
+  if (!b) return;
+  delete state.rules[b.dataset.undo];
+  if (window.haptics) haptics.tap();
+  addLog("You undid the rule for " + b.dataset.undo);
+  render();
+});
+
+document.getElementById("showKey").addEventListener("change", render);
+
+document.getElementById("nextMonth").addEventListener("click", () => {
+  if (state.novAdded) return;
+  state.novAdded = true;
+  if (window.haptics) haptics.tap();
+  NOV.forEach((t, i) => state.txns.push({ id: "n" + i, month: "November 2026", date: t[0], narr: t[1], payee: t[2], amt: t[3], truth: t[4], override: null }));
+  const nov = state.txns.filter(t => t.month === "November 2026");
+  const auto = nov.filter(t => resolve(t).cat === t.truth).length;
+  addLog("November arrived, " + auto + " of " + nov.length + " tagged right with no new work");
+  render();
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  state = fresh();
+  if (window.haptics) haptics.tick();
+  addLog("Keyword rules only");
+  if (aiReady) setStatus("");
+  render();
+});
+
+function setStatus(msg) { document.getElementById("status").textContent = msg; }
+
+let aiReady = false;
+const askBtn = document.getElementById("askAi");
+askBtn.disabled = true;
+setStatus("Connecting to the AI step…");
+(async () => {
+  try { const r = await fetch("/api/tag"); const j = await r.json(); aiReady = !!(j && j.ready); } catch (err) { aiReady = false; }
+  if (aiReady) { askBtn.disabled = false; setStatus(""); }
+  else { setStatus("The AI step is off on this deployment. Corrections and rules still work."); }
+})();
+
+askBtn.addEventListener("click", async () => {
+  if (!aiReady) return;
+  const payees = [...new Set(state.txns.filter(t => resolve(t).src === "none").map(t => t.payee))];
+  if (!payees.length) { setStatus("Nothing is untagged right now."); return; }
+  askBtn.disabled = true;
+  setStatus("Asking the AI about " + payees.length + " merchant" + (payees.length === 1 ? "" : "s") + "…");
+  try {
+    const r = await fetch("/api/tag", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ payees }) });
+    const out = await r.json();
+    if (!r.ok || !Array.isArray(out.results)) throw new Error(out && out.error || "bad");
+    let n = 0;
+    for (const o of out.results) {
+      if (!o || !payees.includes(o.payee)) continue;
+      const cat = CATS.includes(o.category) ? o.category : "Untagged";
+      state.ai[o.payee] = { category: cat, reason: String(o.reason || "").slice(0, 90) };
+      if (cat !== "Untagged") n++;
+    }
+    if (window.haptics) haptics.success();
+    addLog("AI tagged " + n + " of " + payees.length + " unknown merchants");
+    setStatus("");
+  } catch (err) {
+    if (window.haptics) haptics.warn();
+    setStatus("The AI answer couldn't be read. Try again in a minute.");
+  }
+  askBtn.disabled = !aiReady;
+  render();
+});
+
+state = fresh();
+addLog("Keyword rules only");
+render();
+
+</script>
+</div><!--/body-->
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#try-it">Try it</a></li><li><a href="#how-it-works">How it works</a></li></ul></nav>
+</div>
+<div class="wrap"><nav class="next" aria-label="More case studies">
+  <a href="/#work"><span>Back to</span><strong>All work</strong></a>
+  <a href="/curio"><span>Next case study</span><strong data-vt="curio">Curio: a learning feed people actually use</strong></a>
+</nav></div>
+</article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div><strong>Ankur Roy Chowdhury</strong><span>Product portfolio, ISB Hyderabad</span></div>
+  <div class="foot-links"><a href="mailto:roy.chowdhury.ankur@gmail.com">roy.chowdhury.ankur@gmail.com</a><a href="tel:+918420474705">+91 84204 74705</a><a href="https://www.linkedin.com/in/ankurrc/">LinkedIn</a><a href="https://github.com/arcy1410">GitHub</a><a href="https://curio-three-iota.vercel.app/">Curio, live</a></div>
+</div></footer>
+</body>
+</html>
