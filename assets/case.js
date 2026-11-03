@@ -419,4 +419,46 @@
       io.observe(slip);
     } else run(false);
   });
+  /* ---------- Furrio: follow an order ---------- */
+  d.querySelectorAll("[data-fo]").forEach(fo => {
+    const q = s => fo.querySelector(s);
+    const CH = {
+      prepaid: { shop: "Furrio's own store", pay: "Razorpay: UPI, card or net banking", stock: "Shopify takes it off stock", ship: "Shiprocket courier, tracked", web: true, cod: false },
+      cod: { shop: "Furrio's own store", pay: "Cash at the door, via the COD form", stock: "Shopify takes it off stock", ship: "Shiprocket courier, cash collected", web: true, cod: true },
+      amazon: { shop: "Furrio's Amazon listing", pay: "Paid on Amazon", stock: "Logged in the stock tracker", ship: "Amazon's delivery flow", web: false, name: "Amazon" },
+      flipkart: { shop: "Furrio's Flipkart listing", pay: "Paid on Flipkart", stock: "Logged in the stock tracker", ship: "Flipkart's delivery flow", web: false, name: "Flipkart" },
+    };
+    const inr = n => "₹" + n.toLocaleString("en-IN");
+    const range = q("[data-fo-range]");
+    const btns = fo.querySelectorAll("[data-ch]");
+    let ch = "prepaid";
+    function render(changed) {
+      const c = CH[ch];
+      for (const k of ["shop", "pay", "stock", "ship"]) {
+        const el = q(`[data-fo-${k}]`);
+        if (el.textContent !== c[k]) { el.textContent = c[k]; if (changed && !reduce.matches) { el.classList.remove("is-new"); void el.offsetWidth; el.classList.add("is-new"); } }
+      }
+      q("[data-fo-web]").hidden = !c.web;
+      q("[data-fo-mkt]").hidden = c.web;
+      if (!c.web) { q("[data-fo-mkt]").innerHTML = `<b>${c.name}</b> sets the price, takes the payment and runs delivery. The sale is logged in Furrio's stock tracker under ${c.name}, so the monthly view shows every channel side by side.`; return; }
+      const v = Number(range.value);
+      const ship = v >= 499 ? 0 : 49;
+      const fee = c.cod ? 50 : 0;
+      q("[data-fo-cart]").textContent = inr(v);
+      q("[data-fo-items]").textContent = inr(v);
+      q("[data-fo-shipping]").textContent = ship ? inr(ship) : "Free";
+      q("[data-fo-codrow]").hidden = !c.cod;
+      q("[data-fo-total]").textContent = inr(v + ship + fee);
+      q("[data-fo-note]").textContent = ship ? `Add ${inr(499 - v)} more for free shipping.` : c.cod ? "Free shipping from ₹499. The ₹50 fee covers collecting cash." : "Free shipping from ₹499, and no COD fee when paying online.";
+    }
+    btns.forEach(b => b.addEventListener("click", () => {
+      ch = b.dataset.ch;
+      btns.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      H.tap();
+      render(true);
+    }));
+    let last = Number(range.value) >= 499;
+    range.addEventListener("input", () => { const now = Number(range.value) >= 499; if (now !== last) { H.success(); last = now; } else H.tick(); render(false); });
+    render(false);
+  });
 })();
