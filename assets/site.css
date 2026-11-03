@@ -384,9 +384,12 @@ html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(roo
   .inshort li { rotate: 0deg; }
   .shots { grid-template-columns: minmax(0, 1fr); max-width: 380px; }
 }
-@media (max-width: 760px) {
+/* Seven header links need about 860px; below that the menu button takes over. */
+@media (max-width: 880px) {
   .nav { display: none; }
   .menu-btn { display: inline-grid; }
+}
+@media (max-width: 760px) {
   .seq { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .seq::before, .seq::after { left: 22px; right: auto; top: 22px; bottom: 22px; width: 2px; height: auto; }
   .seq::after { transform-origin: 50% 0; }
